@@ -1,0 +1,26 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Sean $f, g$ funciones diferenciables tales que (a) al menos una es armónica y (b) al menos una tiene soporte compacto. Pruebe que $\langle f, g \rangle_D = 0$.
+\end{exercise}
+
+\begin{remark}
+No es necesaria la hipótesis de que $X$ es compacta.
+\end{remark}
+
+\begin{solution}
+Si $f$ es la función armónica, pongamos $\omega = -g \, \partial f$. Entonces,
+$$
+d\omega
+    = -\bar \partial (g \, \partial f)
+    = \partial f \wedge \bar \partial g - \cancelto 0 {g \, \bar \partial \partial f}
+$$
+Si $g$ es la función armónica, pongamos $\omega = f \, \bar \partial g$. Entonces.
+$$
+d\omega
+    = \partial (f \, \bar \partial g)
+    = \partial f \wedge \bar \partial g + \cancelto 0 {f \, \partial \bar \partial g}
+$$
+Sea cual fuere el caso, el producto interno de Dirichlet se reduce a
+$$\langle f, g \rangle_D = \int_X 2i \, \partial f \wedge \bar \partial g = \int_X 2i \, d\omega$$
+Por construcción, $\omega$ tiene soporte compacto. Sea $U \subset X$ una vecindad del soporte tal que $U$ misma tiene clausura compacta. Entonces $\omega$ se anula en la frontera $\partial U$. Por el teorema de Stokes,
+$$\langle f, g \rangle_D = \int_X 2i \, d\omega = \int_U 2i \, d\omega = \int_{\partial U} 2i \, \omega = 0$$
+\end{solution}

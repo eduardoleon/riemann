@@ -1,0 +1,158 @@
+\begin{exercise}
+(Automorfismos)
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que los biholomorfismos $f : \C \to \C$ son polinomios lineales, i.e.,
+    $$\Aut(\C) = \{ f : \C \to \C \mid f(z) = ax + b, (a, b) \in \C^\star \times \C \}$$
+    con la operación de grupo dada por la composición.
+    
+    \item Muestre que $\Aut(\C)$ es isomorfo al grupo
+    $$\Aff(\C) = \left \{ \mat { a & b \\ 0 & 1 } : (a, b) \in \C^\star \times \C \right \}$$
+    donde la operación es la multiplicación de matrices.
+    
+    \item Muestre que los biholomorfismos $f : \C^\star \to \C^\star$ son
+    $$\Aut(\C^\star) = \{ f : \C \to \C \mid f(z) = az \vee f(z) = a/z, a \in \C^\star \}$$
+    
+    \item Muestre que el grupo de biholomorfismos $\Aut(\widehat \C)$ es isomorfo a
+    $$\PSL(2, \C) = \left \{ \mat { a & b \\ c & d } : ad - bc = 1 \right \} / \{ \pm \Id \}$$
+    
+    \item Halle los grupos de automorfismos de los siguientes espacios:
+    \begin{itemize}
+        \item El plano $\C$ agujereado en $\{ 0, 1 \}$.
+        \item El plano $\C$ agujereado en $\{ 0, 1, 2 - 2i \}$.
+    \end{itemize}
+    
+    \item Muestre que toda acción transitiva de un grupo $G$ sobre un conjunto $X$ es equivalente a la acción de $G$ sobre el conjunto de clases laterales $G/H$ de algún subgrupo $H \subset G$. Concluya que $X \cong G/H$. En particular, si uno fija un elemento $x \in X$ y considera el estabilizador $H = G_x$, entonces la aplicación $\varphi : G/H \to X$ definida por $\varphi(gH) = g(x)$ es una biyección.
+    
+    \item Muestre que $\Aut(\D)$ actúa transitivamente sobre $\D$. Por tanto, $\D$ es un espacio homogéneo. Use este hecho para justificar que sólo basta estudiar el estabilizador de $0 \in \D$ en $\Aut(\D)$ en la prueba de la proposición 4 de la sección 3.2.3 del libro de texto.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Sea $f : \C \to \C$ un automorfismo del plano. Entonces $f$ tiene una singularidad aislada en $z = \infty$, que no puede ser esencial: si lo fuese, entonces la imagen de la región $|z| > r$ sería densa en el plano, por el teorema de Casorati-Weierstrass, pero entonces no habría sitio suficiente en el resto del plano para encajar la imagen de $|z| < r$.
+    
+    Puesto que la singularidad de $f$ en el infinito es un polo\footnote{Una singularidad removible es un polo de orden cero.}, $f$ es un polinomio. Si este polinomio es de grado $m$, entonces la ecuación $f(z) = b$ tiene de manera genérica $m$ soluciones. Como el único valor aceptable es $m = 1$, deducimos que $f$ es un un polinomio de grado exactamente $1$.
+    
+    \item Representemos el número $z \in \C$ como el vector columna $(z,1)^T \in \C^2$ y la transformación lineal afín $f : \C \to \C$ definida por $f(z) = az + b$ como la matriz
+    $$\varphi(f) = \mat {a & b \\ 0 & 1}$$
+    
+    Entonces la evaluación de $f$ en $z$ se representa como el producto
+    $$\mat {a & b \\ 0 & 1} \mat {z \\ 1} = \mat {az + b \\ 1}$$
+    
+    Esto implica que $\varphi(g \circ f) = \varphi(g) \cdot \varphi(f)$ para todo $f, g \in \Aut(\C)$. Por ende, $\varphi : \Aut(\C) \to \Aff(\C)$ no sólo es una biyección, sino también un isomorfismo de grupos.
+    
+    \item Sea $f : \C^\star \to \C^\star$ un automorfismo del plano agujereado. Nuevamente, $f$ tiene singularidades aisladas en cero y en el infinito, que no pueden ser esenciales por el teorema de Casorati-Weierstrass. Por lo tanto, $f = p/q$ es una función racional que fija o permuta los agujeros.
+    
+    Reescribamos la ecuación $f(z) = b$ como $p(z) = bq(z)$. Si $m$ es el máximo de los grados de $p, q$, esta ecuación tiene de manera genérica $m$ soluciones. Como el único valor aceptable es $m = 1$, deducimos que $f$ es una transformación de Möbius.
+    
+    Recordemos que una transformación de Möbius está completamente determinada por su efecto sobre tres puntos de la esfera. Tenemos dos casos:
+    \begin{itemize}
+        \item Si $f$ fija los agujeros, entonces $f(z) = az$, donde $a = f(1)$.
+        \item Si $f$ permuta los agujeros, entonces $f(z) = a/z$, donde $a = f(1)$.
+    \end{itemize}
+    
+    Éstos son los casos estipulados en el enunciado.
+    
+    \item Sea $f : \widehat \C \to \widehat \C$ un automorfismo de la esfera. Tomemos una transformación de Möbius $g : \widehat \C \to \widehat \C$ tal que $h = g \circ f$ fija el punto en el infinito. Entonces $h$ es también un automorfismo del plano, i.e., una transformación lineal afín. Por ende, $f = g^{-1} \circ h$ es una transformación de Möbius. Esto es, no hay más automorfismos de la esfera que las transformaciones de Möbius.
+    
+    Representemos $z \in \C$ como la recta generada por $(z, 1)^T \in \C^2$, el punto en el infinito como la recta generada por $(1, 0)^T \in \C^2$ y la transformación de Möbius $f : \widehat \C \to \widehat \C$ definida por
+    $$f(z) = \frac {az + b} {cz + d}$$
+    como la recta en el espacio de matrices generada por
+    $$\varphi(f) = \mat {a & b \\ c & d}$$
+    
+    Entonces la evaluación de $f$ en $z \in \C$ se representa como la recta generada por
+    $$\mat {a & b \\ c & d} \mat {z \\ 1} = \mat {az + b \\ cz + d}$$
+    mientras que la evaluación de $f$ en $z = \infty$ se representa como la recta generada por
+    $$\mat {a & b \\ c & d} \mat {1 \\ 0} = \mat {a \\ c}$$
+    
+    Esto implica que $\varphi(g \circ f) = \varphi(g) \cdot \varphi(f)$ para todo $f, g \in \Aut(\widehat \C)$. Por ende, $\varphi : \Aut(\widehat \C) \to \PGL(2, \C)$ no sólo es una biyección, sino también un isomorfismo de grupos.
+    
+    Finalmente, puesto que $\C$ es algebraicamente cerrado, los grupos proyectivos general y especial son isomorfos. Por ende, $\Aut(\widehat \C) \cong \PGL(2, \C) \cong \PSL(2, \C)$.
+    
+    \item En ambos casos, tenemos el espacio $U$ formado agujereando el plano en un número finito de puntos. Debemos considerar este espacio como la esfera con todos los agujeros dados más uno adicional en el infinito. Sea $A$ este conjunto extendido de agujeros. Entonces, el grupo $\Aut(U)$ está conformado por las transformaciones de Möbius que permutan $A$ de alguna manera.
+    
+    \begin{itemize}
+        \item En el primer caso, $A = \{ 0, 1, \infty \}$. Puesto que $A$ tiene sólo tres puntos, todas las permutaciones de $A$ se extienden de manera única a una transformación de Möbius que fija $U$. Por lo tanto, el grupo de automorfismos $\Aut(U)$ es isomorfo a $S_3$.
+        
+        \item En el segundo caso, $A = \{ 0, 1, \alpha, \infty \}$, donde $\alpha = 2 - 2i$. Puesto que $A$ tiene cuatro puntos, una permutación de $\sigma : A \to A$ se extiende a una transformación de Möbius si y sólo si preserva la razón anarmónica $(z_1 : z_2 : z_3 : z_4) = (\sigma(z_1) : \sigma(z_2) : \sigma(z_3) : \sigma(z_4))$ para todo $z_1, z_2, z_3, z_4 \in A$.
+    \end{itemize}
+    
+    Para determinar las permutaciones válidas, escribí el siguiente programa:
+    \begin{lstlisting}[language=Mathematica]
+    p[a_, b_, c_, d_] := (a - b) (c - d);
+    q[a_, b_, c_, d_] := p[a, c, b, d] / p[a, b, c, d];
+    r[xs_] := Limit[q[a, b, c, d], {a, b, c, d} -> xs];
+    c[xs_] := r[xs] == 2 - 2I;
+    xs = {0, 1, 2 - 2I, Infinity};
+    xss = Permutations[xs];
+    Select[xss, c]
+    \end{lstlisting}
+    
+    La respuesta de Mathematica es
+    \begin{lstlisting}[language=Mathematica]
+    Out[7]= {{0, 1, 2 - 2 I, Infinity}, {1, 0, Infinity, 2 - 2 I},
+    >    {2 - 2 I, Infinity, 0, 1}, {Infinity, 2 - 2 I, 1, 0}}
+    \end{lstlisting}
+    
+    Entonces las permutaciones válidas son
+    \begin{itemize}
+        \item $\id(0) = 0$, $\id(1) = 1$, $\id(\alpha) = \alpha$, $\id(\infty) = \infty$
+        \item $\lambda(0) = 1$, $\lambda(1) = 0$, $\lambda(\alpha) = \infty$, $\lambda(\infty) = \alpha$
+        \item $\mu(0) = \alpha$, $\mu(1) = \infty$, $\mu(\alpha) = 0$, $\mu(\infty) = 1$
+        \item $\nu(0) = \infty$, $\nu(1) = \alpha$, $\nu(\alpha) = 1$, $\nu(\infty) = 0$
+    \end{itemize}
+    
+    Todas ellas satisfacen $\sigma^2 = \id$, así que $\Aut(U) = \{ \id, \lambda, \mu, \nu \}$ es isomorfo al grupo de Klein.
+    
+    \item Fijemos un punto de referencia $x \in X$ y pensemos en cada elemento $g \in G$ como un camino desde $x$ hasta algún otro punto $g(x)$. Las siguientes proposiciones son equivalentes:
+    \begin{itemize}
+        \item Dos caminos $g, h \in G$ conducen al mismo punto $g(x) = h(x)$.
+        \item La composición de ida y vuelta $g^{-1} h \in G_x$ es un ``lazo'' que regresa a $x$.
+        \item $g, h$ pertenecen a la misma clase lateral izquierda $gG_x = hG_x$ del estabilizador.
+    \end{itemize}
+    
+    Sea $G/H$ el conjunto de clases laterales izquierdas del estabilizador $H = G_x$ y sea $\varphi : G/H \to X$ la aplicación del enunciado $\varphi(gH) = g(x)$. Entonces,
+    \begin{itemize}
+        \item $\varphi$ está bien definida, porque todo $h \in gH$ también conduce a $g(x)$.
+        \item $\varphi$ es inyectiva, porque todo $h \notin gH$ conduce a un punto distinto de $g(x)$.
+        \item $\varphi$ es sobreyectiva, porque todo $y \in X$ es el destino de algún $g \in G$.
+    \end{itemize}
+    
+    Por ende, $\varphi$ es una biyección.
+    
+    \item Sea $\alpha \in \D$ un elemento arbitrario. Observemos que la transformación de Möbius
+    $$\varphi(z) = \frac {z - \alpha} {1 - \bar \alpha z}$$
+    fija el círculo unitario. Explícitamente, si $|z| = 1$, entonces
+    $$
+    |\varphi(z)|
+        = \frac {|z - \alpha|} {|1 - \bar \alpha z|}
+        = \frac {|z - \alpha|} {|\bar z - \bar \alpha|}
+        = 1
+    $$
+    
+    Además, hemos construido $\varphi$ específicamente para que $\varphi(\alpha) = 0$. Entonces $\varphi \in \Aut(\D)$ y todo $\alpha \in \D$ pertenece a la órbita de cero. Por ende, $\Aut(\D)$ actúa transitivamente sobre $\D$.
+    
+    El libro de texto demuestra explícitamente que, para todo subgrupo discreto $\Gamma \subset \Aut(\D)$ que actúa libremente sobre $\D$, se cumplen las siguientes proposiciones (parafraseadas):
+    \begin{itemize}
+        \item Existe una vecindad $U \subset \D$ del origen tal que $\Gamma(U)$ es la unión disjunta de $|\Gamma|$ copias de $U$, las cuales son permutadas libremente por $\Gamma$.
+        
+        \item Todo $\beta \in \D$ distinto del origen es separado del origen por vecindades $\Gamma$-invariantes.
+    \end{itemize}
+    
+    El subgrupo conjugado $\Lambda = \varphi \circ \Gamma \circ \varphi^{-1}$ también satisface estas condiciones:
+    \begin{itemize}
+        \item Existe una vecindad $\varphi(U) \in \D$ del origen tal que $\Lambda \circ \varphi(U)$ es la unión disjunta de $|\Lambda|$ copias de $\varphi(U)$, las cuales son permutadas libremente por $\Lambda$.
+        
+        \item Todo $\varphi(\beta) \in \D$ distinto del origen es separado del origen por vecindades $\Lambda$-invariantes.
+    \end{itemize}
+    
+    Puesto que $\Gamma = \varphi^{-1} \circ \Lambda \circ \varphi$, tenemos los siguientes resultados:
+    \begin{itemize}
+        \item Existe una vecindad $U \in \D$ de $\alpha = \varphi^{-1}(0)$ tal que $\Gamma(U)$ es la unión disjunta de $|\Gamma|$ copias de $U$, las cuales son libremente permutadas por $\Gamma$.
+        
+        \item Todo $\beta \in \D$ distinto de $\alpha$ es separado de $\alpha$ por vecindades $\Gamma$-invariantes.
+    \end{itemize}
+\end{enumerate}
+\end{solution}

@@ -1,0 +1,155 @@
+\begin{exercise}
+(Capítulo 3 del libro de texto)
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que, para todo subgrupo discreto $\Gamma \subset \Aut(\H)$, son equivalentes:
+    \begin{itemize}
+        \item $\Gamma$ actúa libremente sobre $\H$.
+        \item $\Gamma$ es libre de torsión.
+    \end{itemize}
+    
+    \item Muestre que $\Gamma_p$ actúa libremente sobre $\H$ para todo número primo $p$.
+    
+    \item Muestre que $X = \{ (z, w) \in \C^2 \mid w^2 = \sin z \}$ es una superficie de Riemann.
+    
+    \item Pruebe la fórmula de Euler.
+    
+    \item El conjunto de ceros de un polinomio homogéneo $f \in \C[z_0, z_1, z_2]$ se denota
+    $$V(f) = \{ [z_0 : z_1 : z_2] \in \CP^2 \mid f(z_0, z_1, z_2) = 0 \}$$
+    
+    Muestre que toda matriz $A \in \GL(3, \C)$ induce un automorfismo $\varphi_A : \CP^2 \to \CP^2$ tal que, para todo polinomio homogéneo $f \in \C[z_0, z_1, z_2]$, existe algún otro polinomio homogéneo $f_A \in \C[z_0, z_1, z_2]$ tal que $\varphi_A \circ V(f) = V(f_A)$.
+    
+    \item Sea $f \in \C[z_0, z_1, z_2]$ un polinomio homogéneo de grado $2$, considerado como forma cuadrática en $\C^3$. Muestre que el criterio que determina si $V(f)$ es una curva regular plana se cumple si y sólo si esta forma es no degenerada.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Tomemos un elemento torsión $\varphi \in \Aut(\H)$ con representación matricial $A \in \SL(2, \R)$. Entonces $A$ es diagonalizable y sus autovalores son raíces de la unidad. Tenemos dos casos:
+    \begin{itemize}
+        \item Si los autovalores son reales, entonces $A = \pm I$, por ende $\varphi = \id$.
+        \item Si los autovalores son complejos conjugados $\lambda, \bar \lambda \in \C$, entonces sus autoespacios asociados son generados por autovectores conjugados $v, \bar v \in \C^2$. Exactamente uno de los dos corresponde a un punto fijo de $\varphi$ en el semiplano $\H$.
+    \end{itemize}
+    
+    Por ende, todo subgrupo de $\Aut(\H)$ que actúa libremente sobre $\H$ es libre de torsión.
+    
+    Tomemos ahora un elemento de $\Aut(\H)$ con un punto fijo. Mediante una transformación de Möbius, identifiquemos este elemento con algún $\varphi \in \Aut(\D)$ que fija el origen. El lema de Schwarz garantiza que $\varphi$ es una rotación. Tenemos dos casos:
+    \begin{itemize}
+        \item Si $\varphi$ es una rotación racional, digamos, una fracción $m/n$ de vuelta, entonces $\varphi^n = \id$.
+        \item Si $\varphi$ es una rotación irracional, entonces $\varphi$ genera un subgrupo denso en el círculo $S^1 \subset \Aut(\D)$ conformado por todas las rotaciones.
+    \end{itemize}
+    
+    Entonces $\varphi$ genera un subgrupo discreto de $\Aut(\D)$ si y sólo si es torsión. Por ende, todo subgrupo discreto libre de torsión de $\Aut(\H)$ actúa libremente sobre $\H$.
+    
+    \item Tomemos un elemento $\varphi \in \Gamma_p$ con representación matricial
+    $$A = \mat {a & b \\ c & d} \in \tilde \Gamma_p$$
+    
+    Puesto que $A = I \pmod p$, tenemos
+    \begin{itemize}
+        \item $a = d = 1 \pmod p$, lo cual implica que $a + d = 1 + ad \pmod {p^2}$.
+        \item $b = c = 0 \pmod p$, lo cual implica que $0 = bc \pmod {p^2}$.
+    \end{itemize}
+    
+    Entonces $a + d = 1 + (ad - bc) = 2 \pmod {p^2}$. Ahora tenemos dos casos:
+    \begin{itemize}
+        \item Si $p \ge 3$, entonces $|a + d|$ se minimiza tomando $a + d = 2$.
+        \item Si $p = 2$, entonces $|a + d|$ se minimiza tomando $a + d = \pm 2$.
+    \end{itemize}
+    
+    El libro de texto demuestra explícitamente que $\varphi \in \Aut(\H)$ tiene puntos fijos si y sólo si $\varphi = \id$ o la matriz asociada $A \in \SL(2, \R)$ satisface $|a + d| < 2$. Lo último es imposible para $\varphi \in \Gamma_p$, por ende, $\Gamma_p$ actúa libremente sobre $\H$.
+    
+    \item Debemos verificar que, en cada punto de $X$, alguna de las coordenadas $z, w$ se puede expresar como función holomorfa de la otra. Por definición, $X$ es la curva de nivel $f^{-1}(0)$ para la función
+    $$f(z, w) = w^2 - \sin z$$
+    
+    Por el teorema de la función implícita, la condición necesaria y suficiente para que una variable sea función holomorfa de la otra en una vecindad de $(z, w) \in X$ es que el diferencial
+    $$df = \der fz \, dz + \der fw \, dw = -\cos z \, dz + 2w \, dw$$
+    no se anule en este punto. Puesto que $dz, dw$ forman una base de $T^\star \C^2$, tenemos
+    $$df = 0 \iff w = \cos z = 0$$
+    lo cual es imposible sobre $X$, porque $w = 0$ implica $\cos^2 z = 1 - \sin^2 z = 1 - w^4 = 1$. Por ende, $X$ es una superficie de Riemann suave.
+    
+    \item Sea $P_m$ el espacio de polinomios homogéneos de grado $m$. La identidad de Euler es
+    $$z_1 \, \der f {z_1} + \dots + z_n \, \der f {z_n} = mf$$
+    para todo $f \in P_m$. El miembro izquierdo es una evaluación del operador lineal
+    $$z_1 \, \der {} {z_1} + \dots + z_n \, \der {} {z_n}$$
+    mientras que el miembro derecho es un reescalamiento por una constante, lo cual obviamente es una transformación lineal. Esta observación nos permite verificar la identidad en una base de $P_m$ y luego extender el resultado a todo $P_m$ por linealidad.
+    
+    Por supuesto, la base de $P_m$ más conveniente para esta situación está conformada por los monomios de grado total $m$. Sea $f = x_1^{m_1} \cdots x_n^{m_n}$ uno de estos monomios. Para cada $i = 1, \dots n$, tenemos
+    \begin{align*}
+    z_i \, \der f {z_i}
+    & = z_i \, \der {} {z_i} (x_1^{m_1} \cdots x_n^{m_n}) \\
+    & = (z_1^{m_1} \cdots \widehat {z_i^{m_i}} \cdots z_n^{m_n}) \cdot z_i \, \der {} {z_i} (z_i^{m_i}) \\
+    & = (z_1^{m_1} \cdots \widehat {z_i^{m_i}} \cdots z_n^{m_n}) \cdot m_i z_i^{m_i} \\
+    & = m_i \cdot z_1^{m_1} \cdots z_i^{m_i} \cdots z_n^{m_n} \\
+    & = m_i f
+    \end{align*}
+    
+    Sumando sobre todos los índices $i$, tenemos
+    $$z_1 \, \der f {z_1} + \dots + z_n \, \der f {z_n} = (m_1 + \dots m_n) f = mf$$
+    
+    \item No hay ninguna buena razón para limitarnos al caso bidimensional, así que no lo haremos. Sea $U$ el espacio vectorial $\C^{n+1}$ agujereado en el origen y sea $\pi : U \to \CP^n$ la proyección natural.
+    
+    Recordemos que los reescalamientos $\C^\star$ son el centro del grupo lineal $\GL(n+1, \C)$. Entonces, toda matriz invertible $A \in \GL(n+1, \C)$, interpretada como un automorfismo lineal $\tilde \varphi_A : \C^{n+1} \to \C^{n+1}$, deja invariantes las órbitas de la acción de $\C^\star$ sobre $U$. Por ende, existe un morfismo de variedades algebraicas $\varphi_A : \CP^n \to \CP^n$ que completa el siguiente diagrama conmutativo:
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+        U \arrow[r, "\tilde \varphi_A"] \arrow[d, "\pi"] & U \arrow[d, "\pi"] \\
+        \CP^n \arrow[r, dashed, "\varphi_A"] & \CP^n
+    \end{tikzcd}
+    $$
+    
+    Eligiendo correctamente las coordenadas locales en las copias de $\CP^n$ que fungen de dominio y codominio, podemos conseguir que la representación coordenada de $\varphi_A$ sea la aplicación identidad. (Ésta es otra de las virtudes del atlas construido en el ejercicio 1.) Por ende, $\varphi_A$ es un biholomorfismo.
+    
+    Recordemos que un polinomio homogéneo $f \in \C[z_0, \dots, z_n]$ puede ser interpretado como una función $f : \CP^n \to \Sigma$, donde $\Sigma = \{ 0, 1 \}$ es el \href{https://en.wikipedia.org/wiki/Sierpi\%C5\%84ski_space}{espacio de Sierpiński}. Para cada $\pi(p) \in \CP^n$, tenemos
+    $$
+    f \circ \pi(p) =
+        \begin{cases}
+            0, & \text{si } f(p) = 0 \\
+            1, & \text{si } f(p) \ne 0
+        \end{cases}
+    $$
+    
+    Entonces los subconjuntos algebraicos proyectivos de $\CP^n$ se expresan como
+    $$V(f_1, \dots, f_k) = f_1^{-1}(0) \cap \dots f_k^{-1}(0)$$
+    
+    Pongamos $g_i = f_i \circ \varphi_A^{-1}$. Es inmediato que
+    \begin{itemize}
+        \item $g_i$ es un polinomio homogéneo.
+        \item $g_i$ tiene el mismo grado que $f_i$.
+        \item $g_i$ se anula en $p \in \CP^n$ si y sólo si $f_i$ se anula en $\varphi_A(p)$.
+    \end{itemize}
+    
+    Entonces $\varphi_A$ envía conjuntos algebraicos a conjuntos algebraicos:
+    \begin{align*}
+    \varphi_A \circ V(f_1, \dots, f_k)
+        & = \varphi_A(f_1^{-1}(0) \cap \dots \cap f_k^{-1}(0)) \\
+        & = \varphi_A \circ f_1^{-1}(0) \cap \dots \cap \varphi_A \circ f_k^{-1}(0) \\
+        & = g_1^{-1}(0) \cap \dots g_k^{-1}(0) \\
+        & = V(g_1, \dots, g_k)
+    \end{align*}
+    
+    La restricción de $\varphi$ a cualquier subconjunto algebraico
+    $$\varphi_A : V(f_1, \dots, f_k) \to V(g_1, \dots, g_k)$$
+    es un isomorfismo de variedades algebraicas. Además, son equivalentes:
+    \begin{itemize}
+        \item $V(f_1, \dots, f_k)$ es una variedad compleja suave.
+        \item $V(g_1, \dots, g_k)$ es una variedad compleja suave.
+        \item $\varphi_A$ es un biholomorfismo entre ellas dos.
+    \end{itemize}
+    
+    \item Nuevamente, no hay ninguna buena razón para limitarnos al caso bidimensional. Consideremos una forma cuadrática arbitraria $f \in \C[z_0, \dots, z_n]$ y extendámosla a la forma bilineal simétrica
+    $$\tilde f(v, w) = \frac {f(v + w) - f(v) - f(w)} 2$$
+    
+    Sea $A \in \Mat(n+1, \C)$ la matriz simétrica que representa a $\tilde f$. Por construcción,
+    $$f(p) = \tilde f(p, p) = p^t Ap$$
+    
+    Entonces las siguientes proposiciones son equivalentes:
+    \begin{itemize}
+        \item $V(f)$ es una hipersuperficie regular en $\CP^n$.
+        \item $df = 2 p^t A \, dp$ sólo se anula en el origen de $\C^{n+1}$.
+        \item $p^t A$ no se anula para ningún $p \in \C^{n+1}$ distinto de cero.
+        \item $Ap$ no se anula para ningún $p \in \C^{n+1}$ distinto de cero.
+        \item $A$ es una matriz invertible.
+        \item $f$ es una forma cuadrática no degenerada.
+    \end{itemize} 
+\end{enumerate}
+\end{solution}

@@ -1,0 +1,59 @@
+\begin{exercise}
+(Continuación analítica)
+
+\vspace{1mm}
+
+\noindent (A propósito de la pregunta de David) Para los siguientes dos ejercicios concernientes a las \textit{continuaciones analíticas}, use como guía las siguientes definiciones tomadas textualmente del libro ``A Course in Complex Analysis and Riemann Surfaces'' de Wilhelm Schlag (\S 2.4, pp. 56-57).
+
+\begin{quote}
+\textbf{Definition 2.16.} Suppose $\gamma : [0,1] \to \Omega$ is a continuous curve inside a region $\Omega$. We say that $D_j = D(\gamma(t_j), r_j)$, $0 \le j \le J$, is a \textit{chain of disks along $\gamma$ in $\Omega$} if $0 \le t_0 < t_1 < t_2 < \dots < t_N  = 1$ and $\gamma([t_j, t_{j+1}]) \subset D_j \cap D_{j+1}$ for all $0 \le j \le N-1$.
+\end{quote}
+\noindent (\textit{Nota:} El súbito reemplazo de $J$ con $N$ es evidentemente un error de edición.)
+
+\begin{quote}
+\textbf{Definition 2.17.} Let $\gamma : [0,1] \to \Omega$ be a continuous curve inside $\Omega$. Suppose $f \in \H(U)$ and $g \in \H(V)$, where $U \subset \Omega$ and $V \subset \Omega$ are neighborhoods of $p := \gamma(0)$ and $q := \gamma(1)$, respectively. Then we say that $g$ is an \textit{analytic continuation} of $f$ along $\gamma$ if there exists a chain of disks $D_j := D(\gamma(t_j), r_j)$ along $\gamma$ in $\Omega$ where $0 \le j \le J$, and $f_j \in \H(D_j)$ such that $f_j = f_{j+1}$ on $D_j \cap D_{j+1}$ and $f_0 = f$ and $f_J = g$ locally around $p$ and $q$, respectively.
+\end{quote}
+
+\noindent Muestre en detalle el lema 2.18 dado en la referencia mencionada:
+\begin{quote}
+    \textbf{Lemma 2.18.} \textit{The analytic continuation $g$ of $f$ along $\gamma$ as in Definition 2.17 only depends on $f$ and $\gamma$, but not on the specific choice of the chain of circles. In particular, it is unique.}
+\end{quote}
+
+\noindent Considere una serie de potencias de la forma
+$$f(z) = \sum_{n=0}^\infty a_n z^{2^n}$$
+con radio de convergencia $R = 1$. Muestre que $f$ no puede ser extendida analíticamente a discos centrados en $z_0$ para ningún $|z_0| = 1$. (\textit{Sugerencia:} Suponga que esto se puede hacer para una vecindad de $z = 1$ y utilice la sustitución $z = pw^2 + qw^3$, donde $0 < p < 1$ y $p + q = 1$.)
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{itemize}
+    \item Diremos que una \textit{cadena de funciones analíticas} a lo largo de $\gamma$ es una lista de funciones $f_j \in \H(D_j)$ definidas en una cadena de discos $D_j$ a lo largo de $\gamma$, tales que, en cada intersección $D_j \cap D_{j+1}$, se tiene $f_j = f_{j+1}$. Entonces $g$ es una continuación analítica de $f$ a lo largo de $\gamma$ si y sólo si existe una cadena de funciones analíticas $f_j$ a lo largo de $\gamma$ que empieza en $f_0 = f$ y termina en $f_n = g$.
+    
+    Sean $f_j \in \H(D_j)$, $\tilde f_k \in \H(\tilde D_k)$ dos cadenas de funciones analíticas a lo largo de $\gamma$ que empiezan en la misma función $f_0 = \tilde f_0$. Sean $t_j, \tilde t_k \in [0,1]$ los instantes en los que $\gamma$ pasa por los centros de $D_j, \tilde D_k$. Demostraremos que $f_j = \tilde f_k$ para todo hito $\tilde t_k$ en el tramo $[t_j, t_{j+1}]$.
+    
+    Por construcción, el hito inicial $\tilde t_0 = 0$ está en el tramo inicial $[t_0, t_1]$ y satisface $f_0 = \tilde f_0$. Asumamos que el hito intermedio $\tilde t_k$ está en el tramo $[t_j, t_{j+1}]$ y satisface $f_j = \tilde f_k$. Entonces,
+    \begin{itemize}
+        \item Si el hito $\tilde t_{k+1}$ también está en el tramo $[t_j, t_{j+1}]$, entonces tenemos $f_j = \tilde f_k = \tilde f_{k+1}$ en la triple intersección $D_j \cap \tilde D_k \cap \tilde D_{k+1}$, que es no vacía. Por el teorema de la unicidad (proposición 1.26), tenemos $f_j = \tilde f_{k+1}$ en la interseción $D_j \cap \tilde D_{k+1}$.
+        
+        \item Si no, entonces el hito $t_{j+1}$ está en el tramo $[\tilde t_k, \tilde t_{k+1}]$. En todo caso, tenemos $f_{j+1} = f_j = \tilde f_k$ en la triple intersección $D_{j+1} \cap D_j \cap \tilde D_k$, que no es vacía. Por el teorema de la unicidad, tenemos $f_{j+1} = \tilde f_k$ en la intersección $D_{j+1} \cap \tilde D_k$.
+    \end{itemize}
+    
+    Por inducción en $j+k$, cada vez que un hito $\tilde t_k$ de una continuación está en un tramo $[t_j, t_{j+1}]$ de la otra continuación, tenemos $f_j = \tilde f_k$. Así, cuando lleguemos al tramo final, tendremos $f_n = \tilde f_{\tilde n}$ en una vecindad del punto final $\gamma(1)$ de la curva.
+    
+    \item Abreviemos $m = 2^n$ y consideremos las potencias del binomio sugerido:
+    $$g_n(w) = (pw^2 + qw^3)^m = \sum_{k=0}^m \binom mk p^{m-k} q^k w^{2m+k}$$
+    
+    Los términos de $g_n(w)$ tienen grados que varían desde $2m$ hasta $3m$. Entonces, para todo $n < n'$,  los términos de $g_n(w)$ tienen menor grado que los términos de $g_{n'}(w)$. Definamos
+    $$g(w) = f(pw^2 + qw^3) = \sum_{n=0}^\infty a_n g_n(w)^m = \sum_j b_j w^j$$
+    
+    Por construcción, los coeficientes no nulos de $g(w)$ son de la forma
+    $$b_{2m+k} = a_n \binom mk p^{m-k} q^k$$
+    y provienen de un único término de un único $g_n(w)$.
+    
+    Como serie, $g(w)$ sólo puede converger si $f(z)$ converge para $z = pw^2 + qw^3$. Esto se debe a que las sumas parciales de $f(z)$ forman una subsucesión de las sumas parciales de $g(w)$. En particular, para $w > 1$, tenemos $z > 1$. Por ende, la serie $f(z)$ no converge. Por ende, la serie $g(w)$ no converge. Por ende, el radio de convergencia de $g(w)$ es menor o igual que $1$.
+    
+    Como función holomorfa, $g(w)$ está definida en la región $|pw^2 + qw^3| < 1$. En particular, en el disco $|w| \le 1$, tenemos $|pw^2 + qw^3| \le |pw^2| + |qw^3| \le p + q = 1$, con igualdad si y sólo si $w = 1$. Por ende, el radio de convergencia de $g(w)$ es exactamente $1$, pero $g(w)$ puede ser continuada analíticamente a través el círculo $|w| = 1$ en cualquier punto distinto de $w = 1$.
+    
+    Supongamos por el absurdo que $\tilde f(z)$ es una continuación analítica de $f$ definida en $z = 1$. Entonces $\tilde g(w) = \tilde f(pw^2 + qw^3)$ sería una continuación analítica de $g$ definida en $w = 1$. La unión del disco de convergencia centrado en $w = 1$ con la región $|pw^2 + qw^3| < 1$ contiene un disco centrado en $w = 0$ cuyo radio es mayor que $1$, en el cual $\tilde g$ es analítica. Esto contradice el hecho de que la serie $g(w)$ no converge más allá del círculo unitario.
+\end{itemize}
+\end{solution}

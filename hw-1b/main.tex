@@ -1,0 +1,76 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[spanish]{babel}
+\usepackage{comment}
+\usepackage{courier}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{subcaption}
+\usepackage{subfiles}
+\usepackage{tikz}
+
+\title{Superficies de Riemann (tarea 1)}
+\author{Eduardo León (\begin{CJK*}{UTF8}{bkai}梁遠光\end{CJK*})}
+\date{Mayo 2020}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Ejercicio}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solución}
+
+\renewcommand \proofname {Prueba}
+
+\newcommand \C {\mathbb C}
+\newcommand \N {\mathbb N}
+\newcommand \Q {\mathbb Q}
+\newcommand \R {\mathbb R}
+\newcommand \Z {\mathbb Z}
+
+\newcommand \CP {\mathbb {CP}}
+
+\renewcommand \H {\mathcal H}
+
+\newcommand \F {\mathscr F}
+\newcommand \G {\mathscr G}
+\newcommand \U {\mathscr U}
+
+\newcommand \mat [1] {\begin{bmatrix} #1 \end{bmatrix}}
+\newcommand \p   [2] {\frac {\partial #1} {\partial #2}}
+
+\DeclareMathOperator \id  {id}
+\DeclareMathOperator \Res {Res}
+
+\DeclareMathOperator \Gal {Gal}
+\DeclareMathOperator \GL  {GL}
+\DeclareMathOperator \SL  {SL}
+
+\usetikzlibrary{arrows}
+\usetikzlibrary{babel}
+\usetikzlibrary{cd}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt}
+\lstset{emph={ComplexContourPlot,ComplexListPlot},emphstyle=\bfseries}
+
+\begin{document}
+
+\maketitle
+
+\subfile{ex1.tex}
+\subfile{ex2.tex}
+\subfile{ex3.tex}
+\subfile{ex4.tex}
+\subfile{ex5.tex}
+\subfile{ex6.tex}
+\subfile{ex7.tex}
+
+\end{document}

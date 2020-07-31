@@ -1,0 +1,13 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Sea $\alpha \in \Omega^1(X)$ una $1$-forma. Pruebe que $\alpha$ es una sección diferenciable del fibrado cotangente $T^\star X$.
+\end{exercise}
+
+\begin{solution}
+En una coordenada local $z = x + iy$, la forma $\alpha$ se representa como
+$$\alpha = \alpha_1 \, dx + \alpha_2 \, dy$$
+Entonces la función $\alpha : X \to T^\star X$ se representa como
+$$\alpha(x, y) = (x, y, \alpha_1, \alpha_2)$$
+La composición de $\alpha$ con la proyección $\pi : T^\star X \to X$ se representa como
+$$\pi \circ \alpha(x, y) = \pi(x, y, \alpha_1, \alpha_2) = (x, y)$$
+Entonces $\pi \circ \alpha = \id$. Por ende, $\alpha$ es una sección diferenciable de $T^\star X$.
+\end{solution}

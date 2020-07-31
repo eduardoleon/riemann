@@ -1,0 +1,105 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[spanish]{babel}
+\usepackage{cancel}
+\usepackage{comment}
+\usepackage{courier}
+\usepackage{csquotes}
+\usepackage{enumitem}
+\usepackage{hyperref}
+\usepackage{listings}
+\usepackage{mathrsfs}
+\usepackage{subfiles}
+\usepackage{tikz}
+
+\title{Superficies de Riemann (tarea 3)}
+\author{Eduardo León (\begin{CJK*}{UTF8}{bkai}梁遠光\end{CJK*})}
+\date{Junio 2020}
+
+\theoremstyle{definition}
+\newtheorem{preliminaries}{Preliminares}
+\newtheorem{exercise}{Ejercicio}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solución}
+\newtheorem*{remark}{Observación}
+
+\renewcommand \proofname {Prueba}
+
+\newcommand \C {\mathbb C}
+\newcommand \D {\mathbb D}
+\newcommand \N {\mathbb N}
+\newcommand \Q {\mathbb Q}
+\newcommand \R {\mathbb R}
+\newcommand \Z {\mathbb Z}
+
+\renewcommand \L {\mathscr L}
+
+\newcommand \X {\mathfrak X}
+
+\newcommand \mat [1] {\begin{bmatrix} #1 \end{bmatrix}}
+
+\newcommand \p [2] {\frac {\partial   #1} {\partial #2}}
+\newcommand \s [2] {\frac {\partial^2 #1} {\partial #2^2}}
+\newcommand \m [3] {\frac {\partial^2 #1} {\partial #2 \partial #3}}
+
+\newcommand \les [3] {
+    0 & \longrightarrow #1 0 \longrightarrow #2 0 \longrightarrow #3 0 \\
+      & \longrightarrow #1 1 \longrightarrow #2 1 \longrightarrow #3 1 \\
+      & \longrightarrow #1 2 \longrightarrow #2 2 \longrightarrow #3 2 \\
+      & \longrightarrow #1 3 \longrightarrow #2 3 \longrightarrow #3 3 \\
+      & \longrightarrow \cdots
+}
+
+\DeclareMathOperator \dom  {dom}
+\DeclareMathOperator \divi {div}
+\DeclareMathOperator \id   {id}
+\DeclareMathOperator \im   {im}
+\DeclareMathOperator \supp {supp}
+\DeclareMathOperator \Res  {Res}
+
+\usetikzlibrary{babel}
+\usetikzlibrary{cd}
+
+\lstset{basicstyle=\footnotesize\ttfamily,breaklines=true}
+\lstset{framextopmargin=50pt}
+\lstset{emph={ComplexContourPlot,ComplexListPlot},emphstyle=\bfseries}
+
+\hypersetup{
+    colorlinks=true,
+    linkcolor=blue,
+    filecolor=blue,
+    urlcolor=blue,
+}
+
+\begin{document}
+
+\maketitle
+
+\subfile{ex01.tex}
+\subfile{ex02.tex}
+\subfile{ex03.tex}
+\subfile{ex04.tex}
+\subfile{ex05.tex}
+\subfile{ex06.tex}
+\subfile{ex07.tex}
+\subfile{ex08.tex}
+\subfile{ex09.tex}
+\subfile{ex10.tex}
+\subfile{ex11.tex}
+\subfile{ex12.tex}
+\subfile{ex13.tex}
+\subfile{ex14.tex}
+\subfile{ex15.tex}
+\subfile{ex16.tex}
+\subfile{ex17.tex}
+\subfile{ex18.tex}
+\subfile{ex19.tex}
+\subfile{ex20.tex}
+
+\end{document}

@@ -1,0 +1,188 @@
+\begin{exercise}
+Pruebe el lema de Poincaré para la cohomología con soporte compacto:
+$$
+H_c^k(\R^n) =
+    \begin{cases}
+        \R, & \text{si } k = n \\
+        0, & \text{si } k \ne n
+    \end{cases}
+$$
+\end{exercise}
+
+\begin{remark}
+El enunciado original pide demostrar los casos $n = 1,2$, pero es más elegante dar una única prueba válida para todo $n \in \N$.
+\end{remark}
+
+\begin{solution}
+La compactificación de Alexandroff de $\R^n$ es la esfera $S^n = \R^n \cup \{ \infty \}$. Hallemos sus grupos de cohomología de de Rham:
+\begin{itemize}
+    \item En dimensión cero, $S^0$ es la unión disjunta de dos puntos, así que
+    $$
+    H^k(S^0) =
+        \begin{cases}
+            \R^2, & \text{si } k = 0 \\
+            0, & \text{si } k \ne 0
+        \end{cases}
+    $$
+    
+    \item En dimensiones superiores, $S^{n+1}$ es la unión no disjunta de dos copias de $\R^{n+1}$, que identificaremos con los complementos del polo norte y el polo sur. La intersección de estas copias es un cilindro que admite un retracto de deformación fuerte a $S^n$.
+    
+    Tenemos la sucesión exacta corta de complejos de cadenas
+    $$
+    0
+        \longrightarrow \Omega^\star(S^{n+1})
+        \longrightarrow \Omega^\star(\R^{n+1})^2
+        \longrightarrow \Omega^\star(S^n)
+        \longrightarrow 0
+    $$
+    
+    Esto induce una sucesión exacta larga en cohomología
+    \begin{align*}
+    0 & \longrightarrow H^0(S^{n+1}) \longrightarrow H^0(\R^{n+1})^2 \longrightarrow H^0(S^n) \\
+      & \longrightarrow H^1(S^{n+1}) \longrightarrow H^1(\R^{n+1})^2 \longrightarrow H^1(S^n) \\
+      & \longrightarrow H^2(S^{n+1}) \longrightarrow H^2(\R^{n+1})^2 \longrightarrow H^2(S^n) \\
+      & \longrightarrow H^3(S^{n+1}) \longrightarrow H^3(\R^{n+1})^2 \longrightarrow H^3(S^n) \\
+      & \longrightarrow \cdots
+    \end{align*}
+    
+    \item Para $n = 0$, la sucesión exacta larga en cohomología se reduce a
+    $$
+    0
+        \longrightarrow H^0(S^1) \longrightarrow \R^2 \longrightarrow \R^2
+        \longrightarrow H^1(S^1) \longrightarrow 0
+    $$
+    
+    Por ende, los grupos de cohomología del círculo $S^1$ son
+    $$
+    H^k(S^1) =
+        \begin{cases}
+            \R, & \text{si } k = 0, 1 \\
+            0, & \text{si } k \ne 0, 1
+        \end{cases}
+    $$
+    
+    \item Para $n > 0$, asumamos inductivamente que
+    $$
+    H^k(S^n) =
+        \begin{cases}
+            \R, & \text{si } k = 0, n \\
+            0, & \text{si } k \ne 0, n
+        \end{cases}
+    $$
+    
+    Entonces la sucesión exacta larga en cohomología se rompe en los siguientes tramos:
+    \begin{itemize}
+        \item $0
+        \longrightarrow H^0(S^{n+1})
+        \longrightarrow \R^2
+        \longrightarrow \R
+        \longrightarrow H^1(S^{n+1})
+        \longrightarrow 0$
+        
+        \item $0 \longrightarrow H^k(S^{n+1}) \longrightarrow 0$,
+        \hfill para todo $k = 2, \dots, n. \qquad \qquad$
+        
+        \item $0 \longrightarrow \R \longrightarrow H^{n+1}(S^{n+1}) \longrightarrow 0$
+    \end{itemize}
+    
+    Por ende, los grupos de cohomología de la esfera $S^{n+1}$ son
+    $$
+    H^k(S^{n+1}) =
+        \begin{cases}
+            \R, & \text{si } k = 0, n+1 \\
+            0, & \text{si } k \ne 0, n+1
+        \end{cases}
+    $$
+\end{itemize}
+Toda forma con soporte compacto $\omega \in \Omega_c^k(\R^n)$ se puede extender a $S^n$ poniendo $\omega_\infty = 0$. Dicha extensión se anula no sólo en $\infty$, sino en toda una vecindad de $\infty$. Recíprocamente, toda forma $\omega \in \Omega^k(S^n)$ que se anula en una vecindad de $\infty$ se puede restringir a una forma con soporte compacto sobre $\R^n$.
+\begin{itemize}
+    \item Sean $\alpha \in \Omega^k(U)$, $\beta \in \Omega^k(V)$ dos formas locales definidas en $\infty$. Diremos que $\alpha, \beta$ son equivalentes si su diferencia $\alpha - \beta$ se anula en alguna vecindad de $\infty$. Un \textit{germen} de $k$-forma en $\infty$ es una clase de equivalencia de $k$-formas locales definidas en $\infty$.
+    
+    El espacio de gérmenes de formas en $\infty$ se denota por $\Omega^\star(S^n)_\infty$ y tiene una estructura de $\R$-álgebra graduada diferencial inducida por $\Omega^\star(-)$. En particular, un germen $[\omega] \in \Omega^k(S^n)_\infty$ es cerrado (resp. exacto) tiene un representante cerrado (resp. exacto) $\omega \in \Omega^k(V)$ en alguna vecindad $\infty \subset V \subset S^n$.
+    
+    \item Tenemos la sucesión exacta corta de complejos de cadenas
+    $$
+    0
+        \longrightarrow \Omega_c^\star(\R^n)
+        \longrightarrow \Omega^\star(S^n)
+        \longrightarrow \Omega^\star(S^n)_\infty
+        \longrightarrow 0
+    $$
+    
+    Esto induce una sucesión exacta larga en cohomología
+    \begin{align*}
+    0 & \longrightarrow H_c^0(\R^n) \longrightarrow H^0(S^n) \longrightarrow H^0(S^n)_\infty \\
+      & \longrightarrow H_c^1(\R^n) \longrightarrow H^1(S^n) \longrightarrow H^1(S^n)_\infty \\
+      & \longrightarrow H_c^2(\R^n) \longrightarrow H^2(S^n) \longrightarrow H^2(S^n)_\infty \\
+      & \longrightarrow H_c^3(\R^n) \longrightarrow H^3(S^n) \longrightarrow H^3(S^n)_\infty \\
+      & \longrightarrow \cdots
+    \end{align*}
+    
+    \item Dado un germen de forma cerrada $[\omega] \in \Omega^k(S^n)_\infty$, tomemos un representante cerrado $\omega \in \Omega^k(V)$ y restrinjámoslo a una vecindad anidada $U \subset V$ difeomorfa al disco. Por supuesto, dicha restricción es también cerrada, así que, por el lema de Poincaré, ocurre una de dos cosas:
+    \begin{itemize}
+        \item $[\omega] \in \Omega^0(S^n)_\infty$ es un germen de función constante.
+        \item $[\omega] \in \Omega^k(S^n)_\infty$ es un germen de forma exacta de grado $k > 0$.
+    \end{itemize}
+    
+    Por ende, $\Omega^k(S^n)_\infty$ tiene la misma cohomología que $\Omega^\star(\R^n)$. Es decir,
+    $$
+    H_{dR}^k(S^n)_\infty =
+        \begin{cases}
+            \R, & \text{si } k = 0 \\
+            0, & \text{si } k \ne 0
+        \end{cases}
+    $$
+    
+    \item Para $n = 0$ la sucesión exacta larga en cohomología se reduce a
+    $$0 \longrightarrow H_c^0(\R^n) \longrightarrow \R^2 \longrightarrow \R \longrightarrow 0$$
+    
+    Por ende, los grupos de cohomología con soporte compacto del punto $\R^0$ son
+    $$
+    H_c^k(\R^0) =
+        \begin{cases}
+            \R, & \text{si } k = 0 \\
+            0, & \text{si } k \ne 0
+        \end{cases}
+    $$
+    
+    \item Para $n = 1$, la sucesión exacta larga en cohomología se reduce a
+    $$
+    0
+        \longrightarrow H_c^0(\R^1) \longrightarrow \R \longrightarrow \R
+        \longrightarrow H_c^1(\R^1) \longrightarrow \R \longrightarrow 0
+    $$
+    
+    Puesto que la recta $\R^1$ no es compacta, $H_c^0(\R^1) = 0$, así que
+    $$
+    H_c^k(\R^1) =
+        \begin{cases}
+            \R, & \text{si } k = 1 \\
+            0, & \text{si } k \ne 1
+        \end{cases}
+    $$
+    
+    \item Para $n > 1$, la sucesión exacta larga en cohomología se rompe en los siguientes tramos:
+    \begin{itemize}
+        \item $0
+        \longrightarrow H_c^0(\R^n)
+        \longrightarrow \R
+        \longrightarrow \R
+        \longrightarrow H_c^1(\R^n)
+        \longrightarrow 0$
+        
+        \item $0 \longrightarrow H_c^k(\R^n) \longrightarrow 0$,
+        \hfill para todo $k = 2, \dots, n-1. \qquad \qquad$
+        
+        \item $0 \longrightarrow H_c^n(\R^n) \longrightarrow \R \longrightarrow 0$
+    \end{itemize}
+    
+    Puesto que el espacio $\R^n$ no es compacto, $H_c^0(\R^n) = 0$, así que
+    $$
+    H_c^k(\R^n) =
+        \begin{cases}
+            \R, & \text{si } k = n \\
+            0, & \text{si } k \ne n
+        \end{cases}
+    $$
+\end{itemize}
+\end{solution}

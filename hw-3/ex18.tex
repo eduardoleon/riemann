@@ -1,0 +1,30 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann compacta, conexa, tal que $\dim_\C H^{0,1}(X) = 1$. Construya una $1$-forma meromorfa que no se anula en $X$. Concluya que $X$ es isomorfa a un toro.
+\end{exercise}
+
+\begin{solution}
+Por el ejercicio anterior, dados dos puntos $p, q \in X$, podemos encontrar dos formas holomorfas $\alpha, \beta \in H^{1,0}(X)$ que no se anulan en $p, q$, respectivamente. Pero $\alpha, \beta$ no son linealmente independientes, ya que $\dim_\C H^{1,0}(X) = \dim_\C H^{0,1}(X) = 1$, así que $\beta$ es múltiplo de $\alpha$. Entonces, $\alpha$ no se anula en $q$. Como $q$ es arbitrario, $\alpha$ no se anula en ningún punto de $X$.
+
+La clave para identificar $X$ con un toro $\C / \Lambda$ es identificar sus recubrimientos universales. Para ello, lo primero que necesitamos es una función $\varphi : \C \to X$ que podamos comparar con el recubrimiento universal abstracto $\pi : \tilde X \to X$. Ante todo, $\varphi$ debe ser un biholomorfismo local, i.e., $d\varphi$ no se puede anular nunca.
+
+Afortundamente, como $\alpha$ es una forma que nunca se anula, el fibrado cotangente holomorfo $T^\star X^{1,0}$ es trivial. Entonces el fibrado tangente holomorfo $TX^{1,0}$ también es trivial y posee una sección global $\xi$ que nunca se anula. Para conseguir $\varphi$, tomemos cualquier curva integral de $\xi$. Como $X$ es compacta, $\xi$ es un campo completo, por ende $\varphi$ está parametrizada por todo $\C$, no un mero subconjunto abierto.
+
+Tenemos en $\varphi$ un candidato a recubrimiento universal. Para verificar que este candidato sea, en efecto, un recubrimiento universal, debemos constatar que exista una solución al problema de levantamiento
+$$
+\begin{tikzcd}[row sep=large, column sep=large]
+& \tilde X \arrow[d, "\pi"] \\
+\C \arrow[ru, dashed, "\tilde \varphi"] \arrow[r, "\varphi"] & X
+\end{tikzcd}
+$$
+y que dicha solución sea un biholomorfismo. Por lo pronto, lo primero es gratis: $\C$ es simplemente conexo, ergo, $\tilde \varphi$ existe. Es más, $\tilde \varphi$ es un biholomorfismo local, porque la estructura compleja de $\tilde X$ es calco local de la estructura de $X$. Sólo nos falta probar que $\tilde \varphi$ es una biyección.
+
+Para la sobreyectividad, fijemos un punto de referencia $p_0$ en la imagen de $\tilde \varphi$. Dado otro punto $p_1 \in X$, conectemos $p_0, p_1$ con una curva $\tilde \gamma : [0,1] \to \tilde X$. La proyección $\gamma = \pi \circ \gamma$ está completamente en la imagen de $\varphi$, por el teorema de existencia y unicidad de las EDOs. Esto es, existe una curva $\beta : [0,1] \to \C$ tal que $\gamma = \varphi \circ \beta$. Por construcción, $\tilde \gamma = \tilde \varphi \circ \beta$ es la única forma de levantar $\gamma$ a una curva en $\tilde X$ que parte de $p_0$. Esto implica $\tilde \gamma$ está en la imagen de $\tilde \varphi$. En particular, $p_1$ está en la imagen de $\tilde \varphi$.
+
+Para la inyectividad, tomemos cualquier antiderivada $\psi : \tilde X \to \C$ de la forma exacta $\pi^\star \alpha$. Entonces,
+$$\p {} z \psi \circ \tilde \varphi(z) = d\psi \circ d\tilde \varphi(1) = \pi^\star \alpha \circ d\tilde \varphi(1) = \alpha \circ d\pi \circ d\tilde \varphi(1) = \alpha(\xi)$$
+Por construcción, $\alpha(\xi)$ es una función holomorfa sobre $X$, así que $\alpha(\xi)$ es obligatoriamente constante. Por ende, $\psi \circ \tilde \varphi$ es una transformación lineal afín. Por ende, $\tilde \varphi$ es inyectiva.
+
+Hemos demostrado que $\C$ es el recubrimiento universal de $X$. Entonces el grupo fundamental $\pi_1(X)$ es un grupo discreto que actúa transitivamente sobre $\C$ por biholomorfismos. Esto implica que $\pi_1(X)$ actúa sobre $X$ por traslaciones. Puesto que las traslaciones de $\C$ forman un grupo isomorfo a $\C$, deducimos que $\pi_1(X)$ es un subgrupo aditivo discreto de $\C$. Entonces $\pi_1(X)$ es un grupo abeliano libre de rango $\le 2$. Es más, el rango debe ser exactamente $2$ si queremos que el cociente $X \cong \C / \pi_1(X)$ sea compacto. Por ende, $\pi_1(X)$ es un retículo $\Lambda \subset \C$ y el cociente $X \cong \C / \Lambda$ es un toro.
+
+Una consecuencia de este análisis es que todas las superficies de Riemann de género $1$ son $\mathbb T^2$-espacios principales e incluso adquieren una estructura de grupo abeliano si escogemos un elemento identidad.
+\end{solution}

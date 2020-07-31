@@ -1,0 +1,140 @@
+\begin{exercise}
+(Espacio proyectivo complejo, curvas algebraicas proyectivas)
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre en detalle que $\CP^n$ es una variedad diferenciable: exhiba las cartas explícitamente y muestre que los cambios de coordenadas son diferenciables. Muestre que, con la topología inducida por estas cartas, el espacio proyectivo $\CP^n$ es compacto.
+    
+    \item La cuártica de Klein es el curva proyectiva plana
+    $$\bar X = \{ [z_0 : z_1 : z_2] \in \CP^2 : p(z_0, z_1, z_2) = z_0^3 z_1 + z_1^3 z_2 + z_2^3 z_0 = 0 \}$$
+    
+    En clase mostramos que los conjuntos de este tipo son superficies de Riemann suaves/regulares de manera genérica. Con lujo de detalle haga lo mismo para $\bar X$.
+    \begin{itemize}
+        \item Determine la relación entre el conjunto $X$ de ceros de la deshomogenización de $p$ y $\bar X$.
+        \item Halle las cartas de $\bar X$.
+        \item Muestre que la compatibilidad arroja un cambio de coordenadas holomorfo.
+        \item Argumente por qué la superficie de Riemann hallada es suave/regular.
+    \end{itemize}
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Sea $U$ el espacio vectorial $\C^{n+1}$ agujereado en el origen. El espacio proyectivo $\CP^n$ se define como el espacio de órbitas de la acción de $\C^\star$ sobre $U$ vía reescalamientos. Denotaremos por $\pi : U \to \CP^n$ la aplicación proyección y $[z_0 : \dots : z_n] = \pi(z_0, \dots, z_n)$.
+    
+    Para construir un atlas sobre $\CP^n$, generalizaremos el procedimiento utilizado en el ejercicio 2 de la tarea anterior. Tomemos
+    \begin{itemize}
+        \item Un sistema lineal de coordenadas $z_0, \dots, z_n : \C^{n+1} \to \C$.
+        \item El conjunto $V = \C^\star \times \C^n$, identificado con el abierto $z_0 \ne 0$ de $\C^{n+1}$.
+        \item El automorfismo $\psi : V \to V$ dado por $\psi(z_0, z_1, \dots, z_n) = (z_0, w_1, \dots, w_n)$, donde $w_i = z_i / z_0$.
+        \item La proyección $\rho : V \to \C^n$ que descarta la coordenada $z_0 \in \C^\star$.
+    \end{itemize}
+    
+    Por construcción, $\psi$ envía las órbitas de la proyección ``complicada'' $\pi : V \to \pi(V)$ a las órbitas de la proyección ``más sencilla, imposible'' $\rho : V \to \C^n$. Entonces existe un homeomorfismo $\varphi : \pi(V) \to \C^n$ que completa el siguiente diagrama conmutativo:
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+        V \arrow[r, "\psi"] \arrow[d, "\pi"] & V \arrow[d, "\rho"] \\
+        \pi(V) \arrow[r, dashed, "\varphi"] & \C^n
+    \end{tikzcd}
+    $$
+    
+    Por supuesto, $\varphi([z_0 : \dots : z_n]) = (w_1, \dots, w_n)$. Utilizando todas las elecciones posibles de $z_0, \dots, z_n$, hemos construido una cobertura abierta de $\CP^n$ por copias de $\C^n$. Por ende, $\CP^n$ es localmente homeomorfo a $\C^n$.
+    
+    Los cambios de coordenadas de este atlas se construyen tomando dos sistemas de referencia $z_i, z_i'$ y calculando la matriz de cambio de base que los relaciona:
+    $$
+    \mat {z_0' \\ \vdots \\ z_n'} =
+    \mat {
+        a_{00} & \dots & a_{0n} \\
+        \vdots & \ddots & \vdots \\
+        a_{n0} & \dots & a_{nn}}
+    \mat {z_0 \\ \vdots \\ z_n}
+    $$
+    
+    Entonces la aplicación de transición entre las vecindades coordenadas $\pi(V)$ y $\pi(V')$ es
+    $$
+    w_i' = \frac
+        {a_{i0} + a_{i1} w_1 + \dots + a_{in} w_n}
+        {a_{00} + a_{01} w_1 + \dots + a_{0n} w_n}
+    $$
+    
+    Esta aplicación es claramente holomorfa. Por ende, el atlas es holomorfo.
+    
+    El atlas que hemos construido es mucho más grande que lo estrictamente necesario para cubrir $\CP^n$, pero este esfuerzo adicional tiene un propósito. Dados dos puntos distintos $\pi(p), \pi(q) \in \CP^n$, existe algún hiperplano $L \subset \C^{n+1}$ que no contiene a $p, q$. Tomando un sistema de referencia en el cual $L$ es el hiperplano $z_0 = 0$, obtenemos una vecindad coordenada $\pi(V) \cong \C^n$ en la que $\pi(p)$, $\pi(q)$ se pueden separar por abiertos usando métodos ya conocidos. Así pues, $\CP^n$ es un espacio Hausdorff.
+    
+    Consideremos ahora los $n+1$ sistemas de referencia en los que $z_i$ es una permutación cíclica de las coordenadas estándares de $\C^{n+1}$. En cada caso, $V$ es el complemento de un hiperplano coordenado distinto. Puesto que dichos hiperplanos se intersecan únicamente en el origen, las $n+1$ vecindades coordenadas inducidas $\pi(V) \cong \C^n$ cubren $\CP^n$. Por ende, $\CP^n$ es segundo enumerable.
+    
+    Observemos que todo vector no nulo $v \in U$ se representa de manera única como el producto de un escalar positivo $\lambda > 0$ con un vector unitario $u \in S^{2n+1}$. Además, tanto $\lambda = \Vert v \Vert$ como $u = v / \lambda$ son funciones continuas de $v$. Esto implica que, topológicamente, $U = \R^+ \times S^{2n+1}$. Por la misma razón, tenemos $\C^\star = \R^+ \times S^1$. Esta última factorización también respeta la estructura de grupo.
+    
+    Entonces la acción de $\C^\star$ sobre $U$ se descompone en dos acciones consecutivas:
+    \begin{itemize}
+        \item Reescalamiento en módulo, con espacio de órbitas $U / \R^+ = S^{2n+1}$. La aplicación cociente es la normalización de vectores $v \mapsto v / \Vert v \Vert$.
+        
+        \item Rotación de cada componente, con espacio de órbitas $S^{2n+1} / S^1 = \CP^n$. La aplicación cociente puede verse como una generalización de la fibración de Hopf.
+    \end{itemize}
+    
+    Sabemos que la esfera $S^{2n+1}$ es compacta, ya sea por el ejercicio 1 de la tarea anterior o por análisis real elemental. Entonces $\CP^n$, que es cociente de $S^{2n+1}$, también es compacto.
+    
+    \item Puesto que $p(z_0, z_1, z_2) = p(z_1, z_2, z_0) = p(z_2, z_0, z_1)$, las partes de $\bar X$ en los abiertos afines canónicos son isomorfas. Entonces podemos estudiar sólo una parte afín $X$, digamos,
+    $$f(z, w) = p(1, z, w) = z + z^3 w + w^3 = 0$$
+    y replicar nuestros hallazgos en las otras dos partes.
+    
+    Debemos verificar que, en cada punto de $X$, alguna de las coordenadas $z, w$ se puede expresar como función holomorfa de la otra. La condición necesaria y suficiente para ello es que el diferencial
+    $$df = \der fz \, dz + \der fw \, dw = (1 + 3z^2 w) \, dz + (z^3 + 3w^2) \, dw$$
+    no se anule en ningún punto de $X$. El siguiente programa calcula el ideal de $\C[z, w]$ que se anula en los puntos singulares de $X$:
+    \begin{lstlisting}[language=Mathematica]
+    f = z + z^3 w + w^3;
+    fz = D[f, z];
+    fw = D[f, w];
+    GroebnerBasis[{f, fz, fw}, {z, w}]
+    \end{lstlisting}
+    
+    El significado de la respuesta de Mathematica
+    \begin{lstlisting}[language=Mathematica]
+    Out[4]= {1}
+    \end{lstlisting}
+    es que el polinomio $1$ se anula en los puntos singulares de $X$. Por supuesto, $1$ no se anula en ningún sitio, así que $X$ no tiene puntos singulares, i.e., $X$ es una superficie de Riemann suave.
+    
+    El teorema de la función implícita nos permite construir un atlas sobre $X$ únicamente con cartas de los dos siguientes tipos:
+    \begin{itemize}
+        \item Funciones holomorfas $w = g(z)$ que satisfacen $f(z, g(z)) = 0$.
+        \item Funciones holomorfas $z = g(w)$ que satisfacen $f(g(w), w) = 0$.
+    \end{itemize}
+    
+    Para verificar la compatibilidad de las cartas, tomemos dos cartas y restrinjamos sus dominios a las partes que cubren la misma porción de $X$. Tenemos dos posibles casos:
+    \begin{itemize}
+        \item Si las cartas son del mismo tipo, digamos $w = g(z)$ y $w = h(z)$, entonces $g(z) = h(z)$. Por ende, la función de transición es la identidad, que es obviamente holomorfa.
+        
+        \item Si las cartas son de tipos ``contrarios'', digamos $w = g(z)$ y $z = h(w)$, entonces las funciones de transición en ambas direcciones son las mismas cartas $g, h$, holomorfas por hipótesis.
+    \end{itemize}
+    
+    El atlas de $\bar X$ es la unión de los atlases de las tres copias de $X$. Sabemos que
+    \begin{itemize}
+        \item Las cartas de la misma copia se pegan de manera ``internamente'' compatible.
+        \item Existen automorfismos obvios de $\bar X$ que rotan las tres copias de $X$.
+    \end{itemize}
+    
+    Entonces sólo tenemos que verificar que dos copias de $X$ se peguen de manera ``externamente'' compatible. Utilizaremos el original $X$ y la réplica $X'$ definida por
+    $$p(t, s, 1) = t^3 s + s^3 + t = 0$$
+    
+    Tomemos una carta en $X$, otra en $X'$ y restrinjamos sus dominios a las partes que cubren la misma porción de $\bar X$. Recordemos que, si $[1 : z : w] \in X$, $[t : s : 1] \in X'$ son el mismo punto de $\bar X$, entonces sus coordenadas están relacionadas por $(t, s) = \varphi(z, w) = (1/w, z/w)$, donde $\varphi$ es una aplicación de transición de $\CP^2$ y, por ende, es un biholomorfismo. Luego,
+    \begin{itemize}
+        \item Si $w = g(z)$ es la carta en $X$, entonces proyectando
+        $$(t, s) = \varphi(z, w) = \varphi(z, g(z))$$
+        a la coordenada local de $X'$, tenemos una función holomorfa de $z$.
+        
+        \item Si $z = g(w)$ es la carta en $X$, entonces proyectando
+        $$(t, s) = \varphi(z, w) = \varphi(g(w), w)$$
+        a la coordenada local de $X'$, tenemos una función holomorfa de $w$.
+        
+        \item Si $s = g(t)$ es la carta en $X'$, entonces proyectando
+        $$(z, w) = \varphi^{-1}(t, s) = \varphi^{-1}(t, g(t))$$
+        a la coordenada local de $X$, tenemos una función holomorfa de $t$.
+        
+        \item Si $t = g(s)$ es la carta en $X'$, entonces proyectando
+        $$(z, w) = \varphi^{-1}(t, s) = \varphi^{-1}(g(s), s)$$
+        a la coordenada local de $X$, tenemos una función holomorfa de $s$.
+    \end{itemize}
+    
+    Por ende, $\bar X$ tiene funciones de transición holomorfas y es una superficie de Riemann suave.
+\end{enumerate}
+\end{solution}

@@ -1,0 +1,144 @@
+\begin{exercise}
+(Función zeta de Riemann)
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que la función zeta de Riemann
+    $$\zeta(z) = \sum_{n=1}^\infty n^{-z}$$
+    converge absoluta y uniformemente en $\Re(z) \ge 1 + \varepsilon$ para todo $\varepsilon > 0$.
+    
+    (\textit{Sugerencia:} Use la prueba M de Weierstrass.)
+    
+    \item Muestre que $\zeta(z)$ es analítica para todo $z \in \C$ tal que $\Re(z) > 1$.
+    
+    (\textit{Sugerencia:} Use algún corolario del teorema de Morera.)
+    
+    \item Demuestre la siguiente identidad:
+    $$\zeta(z) \Gamma(z) = \int_0^\infty \frac {x^{z-1} e^{-x}} {1 - e^{-x}} \, dx$$
+    
+    (\textit{Sugerencia:} Parta de la definición de $\Gamma$ como la integral
+    $$\Gamma(z) = \int_0^\infty e^{-t} t^{z-1} \, dt$$
+    y aplique el cambio de variable $t = nx$, con $n = 1, 2, 3, \dots$)
+    
+    \begin{enumerate}[label=\arabic*)]
+        \item A partir de esta expresión, obtenga una continuación meromorfa de $\zeta(z)$ en $\C$.
+        
+        (\textit{Sugerencia:} Por un lado, considere la integral
+        $$\int_1^\infty \frac {t^{z-1}} {e^t - 1} \, dt$$
+        
+        Por otro lado, expanda la serie de Laurent
+        $$\frac 1 {e^t - 1} = \sum_{n=-1}^\infty c_n t^n$$
+        cuya región de convergencia es $0 < |t| < 2\pi$.)
+        
+        \item Describa los polos de esta extensión.
+    \end{enumerate}
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Pongamos $p = 1 + \varepsilon$. Cada término de la $p$-serie convergente
+    $$\sum_{n=1}^\infty n^{-p}$$
+    es una cota uniforme para el término correspondiente de la serie
+    $$\sum_{n=1}^\infty \left| n^{-z} \right| = \sum_{n=1}^\infty n^{-\Re(z)}$$
+    en la región $\Re(z) \ge p$. Por ende, la función zeta de Riemann
+    $$\zeta(z) = \sum_{n=1}^\infty n^{-z}$$
+    converge absoluta y uniformemente en la región $\Re(z) \ge p$.
+    
+    \item Sea $C$ una curva cerrada en la región $\Re(z) > 1$. Puesto que $C$ es compacta, la coordenada real $\Re(z)$ alcanza un valor mínimo $p = 1 + \varepsilon$ entre los puntos de $C$. Entonces $C$ está contenida en la región $\Re(z) \ge p$. Llamemos $L$ a la longitud de $C$ y observemos que la integral
+    $$
+    \int_C \sum_{n=1}^\infty \left| n^{-z} \right| \, dz
+        \le \int_C \sum_{n=1}^\infty n^{-p} \, dz
+        = L \cdot \sum_{n=1}^\infty n^{-p}
+    $$
+    es una cantidad finita. Entonces, por el teorema de Fubini-Tonelli,
+    $$
+    \int_C \zeta(z) \, dz
+        = \int_C \sum_{n=1}^\infty n^{-z} \, dz
+        = \sum_{n=1}^\infty \int_C n^{-z} \, dz
+        = \sum_{n=1}^\infty 0
+        = 0
+    $$
+    
+    Entonces, por el teorema de Morera, $\zeta$ es una función holomorfa.
+    
+    \item Expandiendo las definiciones de $\zeta$, $\Gamma$ y sustituyendo $t = ns$, tenemos
+    $$
+    \zeta(z) \Gamma(z)
+        = \sum_{n=1}^\infty n^{-z} \int_0^\infty e^{-t} t^{z-1} \, dt
+        = \sum_{n=1}^\infty \int_0^\infty e^{-ns} s^{z-1} \, ds
+    $$
+    
+    Pongamos $x = \Re(z)$ y observemos que la integral
+    $$
+    \zeta(x) \Gamma(x)
+        = \sum_{n=1}^\infty \int_0^\infty e^{-nx} s^{x-1} \, ds
+        = \sum_{n=1}^\infty \int_0^\infty \left| e^{-nz} s^{z-1} \right| \, ds
+    $$
+    es una cantidad finita. Entonces, por el teorema de Fubini-Tonelli,
+    $$
+    \zeta(z) \Gamma(z)
+        = \int_0^\infty s^{z-1} \sum_{n=1}^\infty e^{-ns} \, ds
+        = \int_0^\infty s^{z-1} \frac {e^{-s}} {1 - e^{-s}} \, ds
+        = \int_0^\infty \frac {t^{z-1}} {e^t - 1} \, dt
+    $$
+    que es el resultado solicitado.
+    
+    \begin{enumerate}[label=\arabic*)]
+        \item Reescribamos el resultado anterior como
+        $$
+        \zeta(z) \Gamma(z)
+            = \int_0^1 \frac {t^{z-1}} {e^t - 1} \, dt
+            + \int_1^\infty \frac {t^{z-1}} {e^t - 1} \, dt
+        $$
+        
+        Dado un compacto $K \subset \C$, existe un instante uniforme $T \ge 1$ a partir del cual el integrando es dominado en módulo por $e^{-t/2}$ para todo $z \in K$. Entonces la integral
+        $$\int_T^\infty \left| \frac {t^{z-1}} {e^t - 1} \right| \, dt \le \int_T^\infty e^{-t/2} \, dt$$
+        es una cantidad finita. Por ende, la integral en el tramo final
+        $$F(z) = \int_1^\infty \frac {t^{z-1}} {e^t - 1} \, dt$$
+        converge de manera localmente uniforme a una función entera de $z$.
+        
+        Consideremos la serie de Laurent centrada en el polo simple $t = 0$ del factor meromorfo
+        $$f(t) = \frac 1 {g(t)} = \frac 1 {e^t - 1} = \sum_{n=-1}^\infty c_n t^n$$
+        
+        Esta serie converge de manera localmente uniforme en $0 < |t| < 2\pi$, pues los polos más cercanos a $t = 0$ son $t = \pm 2\pi i$. Por ende, la integral en el tramo inicial es
+        $$G(z) = \int_0^1 \frac {t^{z-1}} {e^t - 1} \, dt = \int_0^1 \sum_{n=-1}^\infty c_n t^{z+n-1} \, dt$$
+        
+        Pongamos $x = \Re(z)$ y observemos que, en la región $x > 1$, la integral
+        $$
+        G(x)
+            = \int_0^1 \sum_{n=-1}^\infty c_n t^{x+n-1} \, dt
+            = \int_0^1 \sum_{n=-1}^\infty c_n \left| t^{z+n-1} \right| \, dt
+        $$
+        es una cantidad finita. Entonces, por el teorema de Fubini-Tonelli,
+        $$
+        G(z)
+            = \int_0^1 \sum_{n=-1}^\infty c_n t^{z+n-1} \, dt
+            = \sum_{n=-1}^\infty\int_0^1 c_n t^{z+n-1} \, dt
+            = \sum_{n=-1}^\infty \frac {c_n} {z+n}
+        $$
+        
+        Recordemos que la serie $f(1) = c_{-1} + c_0 + c_1 + \dots$ es absolutamente convergente. Tomemos un entero $k \ge 2$ y un radio ligeramente menor $r = k - \varepsilon$. Cada término de la serie
+        $$\frac 1 \varepsilon \cdot \sum_{n=k}^\infty |c_n|$$
+        es una cota uniforme para el término correspondiente de la serie
+        $$\sum_{n=k}^\infty \left| \frac {c_n} {z+n} \right|$$
+        en la región $|z| < r$. Por ende, el sufijo
+        $$G_k(z) = \sum_{n=k}^\infty \frac {c_n} {z+n}$$
+        es una función holomorfa en $|z| < k$. Por ende, $G$ es una función meromorfa en $\C$ y tiene las mismas singularidades que el prefijo
+        $$G(z) - G_k(z) = \frac {c_{-1}} {z-1} + \dots + \frac {c_{k-1}} {z+k-1}$$
+        en cada disco $|z| < k$. Estas singularidades son polos simples en los puntos $z = -n$ con $c_n \ne 0$ y los residuos correspondientes son $\Res(G, -n) = c_n$.
+        
+        Finalmente, la función $\zeta$ puede ser extendida de manera meromorfa en $\C$ como
+        $$\zeta = \frac {F + G} \Gamma$$
+        
+        \item Puesto que $F$, $1/\Gamma$ son funciones enteras, todo polo de $\zeta$ se manifiesta como polo de $G$. Puesto que $G$ sólo tiene polos simples, $\zeta$ y $\Gamma$ no tienen polos comunes. Entonces el único polo de $\zeta$ es $z = 1$ y el residuo correspondiente es
+        $$
+        \Res(\zeta, 1)
+            = \frac {\Res(G, 1)} {\Gamma(1)}
+            = c_{-1}
+            = \Res(f, 0)
+            = \frac 1 {g'(0)}
+            = 1
+        $$
+    \end{enumerate}
+\end{enumerate}
+\end{solution}

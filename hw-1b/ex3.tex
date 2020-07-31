@@ -1,0 +1,68 @@
+\begin{exercise}
+(Operadores $\partial$ y $\bar \partial$)
+
+\begin{itemize}
+    \item Sea $f(z) = u(z) + i \, v(z)$ una función compleja continua. Recuerde que $f$ es holomorfa en $z_0$ si y sólo si las derivadas parciales de $u, v$ existen y satisfacen las ecuaciones de Cauchy-Riemann
+    $$u_x = v_y, \qquad \qquad u_y = -v_x$$
+    en una vecindad de $z_0$ (teorema de Looman-Menchoff). Note que
+    $$x = \frac {z + \bar z} 2, \qquad \qquad y = \frac {z - \bar z} {2i}$$
+    así que $u, v$ pueden ser consideradas funciones de $z, \bar z$. Verifique que
+    $$\bar \partial f = \p f {\bar z} = \frac 12 (u_x - v_y) + \frac i2 (u_y + v_x)$$
+    y concluya que $f$ es holomorfa en $z_0$ si y sólo si $\bar \partial f = 0$ en una vecindad de $z_0$.
+    
+    \item Usando como modelo el ítem anterior, defina un operador $\partial$ tal que $\partial \bar f = 0$ para toda función antiholomorfa $\bar f$.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{itemize}
+    \item Por la regla de la cadena, tenemos
+    $$
+    \bar \partial
+        = \p {} {\bar z}
+        = \p x {\bar z} \p {} x + \p y {\bar z} \p {} y
+        = \frac 12 \p {} x + \frac i2 \p {} y
+    $$
+    
+    Aplicando este operador a $f = u + iv$, tenemos
+    $$
+    \bar \partial f
+        = \bar \partial u + i \bar \partial v
+        = \frac 12 \p ux + \frac i2 \p uy + \frac i2 \p vx - \frac 12 \p vy
+        = \frac 12 (u_x - v_y) + \frac i2 (u_y + v_x)
+    $$
+    
+    Por ende, las siguientes proposiciones son equivalentes:
+    \begin{itemize}
+        \item $f$ es holomorfa en $z_0$.
+        \item $u, v$ satisfacen las ecuaciones de Cauchy-Riemann en una vecindad de $z_0$.
+        \item Las partes real e imaginaria de $\bar \partial f$ se anulan en una vecindad de $z_0$.
+        \item $\bar \partial f = 0$ en una vecindad de $z_0$.
+    \end{itemize}
+    
+    \item Por la regla de la cadena, tenemos
+    $$
+    \partial
+        = \p {} z
+        = \p x z \p {} x + \p y z \p {} y
+        = \frac 12 \p {} x - \frac i2 \p {} y
+    $$
+    
+    Aplicando este operador a $\bar f = u - iv$, tenemos
+    $$
+    \partial \bar f
+        = \partial u - i \partial v
+        = \frac 12 \p ux - \frac i2 \p uy - \frac i2 \p vx - \frac 12 \p vy
+        = \frac 12 (u_x - v_y) - \frac i2 (u_y + v_x)
+    $$
+    
+    Por ende, las siguientes proposiciones son equivalentes:
+    \begin{itemize}
+        \item $\bar f$ es antiholomorfa (en $z_0$).
+        \item $u, v$ satisfacen las ecuaciones de Cauchy-Riemann (en una vecindad de $z_0$).
+        \item Las partes real e imaginaria de $\partial \bar f$ se anulan (en una vecindad de $z_0$).
+        \item $\partial \bar f = 0$ (en una vecindad de $z_0$).
+    \end{itemize}
+\end{itemize}
+\end{solution}

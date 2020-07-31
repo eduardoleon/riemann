@@ -1,0 +1,93 @@
+\begin{exercise}
+Sea $U_n \subset \R^2$ el plano agujereado en $n$ puntos. Pruebe que
+$$
+H^k(U_n) =
+    \begin{cases}
+        \R, & \text{si } k = 0 \\
+        \R^n, & \text{si } k = 1 \\
+        0, & \text{si } k \ge 2
+    \end{cases}
+$$
+y halle bases explícitas para dichos espacios vectoriales.
+\end{exercise}
+
+\begin{solution}
+En este ejercicio y el siguiente, usaremos el teorema de Mayer-Vietoris: dada una cobertura de una variedad $U$ por dos subconjuntos abiertos $A, B$, tenemos una sucesión exacta corta
+$$
+0
+    \longrightarrow \Omega^\star(U)
+    \longrightarrow \Omega^\star(A) \oplus \Omega^\star(B)
+    \longrightarrow \Omega^\star(A \cap B)
+    \longrightarrow 0
+$$
+que induce una sucesión exacta larga en cohomología
+\begin{align*}
+0 & \longrightarrow H^0(U) \longrightarrow H^0(A) \oplus H^0(B) \longrightarrow H^0(A \cap B) \\
+  & \longrightarrow H^1(U) \longrightarrow H^1(A) \oplus H^1(B) \longrightarrow H^1(A \cap B) \\
+  & \longrightarrow H^2(U) \longrightarrow H^2(A) \oplus H^2(B) \longrightarrow H^2(A \cap B) \\
+  & \longrightarrow H^3(U) \longrightarrow H^3(A) \oplus H^3(B) \longrightarrow H^3(A \cap B) \\
+  & \longrightarrow \cdots
+\end{align*}
+El hecho clave es el siguiente: dada una sucesión exacta finita de espacios vectoriales, la suma alternada de las dimensiones de los espacios involucrados debe ser cero.
+\begin{itemize}
+    \item Para hallar la cohomología de $U_1$, tomemos $A$ como el complemento del eje $X$ no positivo y $B$ como el complemento del eje $X$ no negativo. Entonces $A, B$ son difeomorfos a $U_0$, mientras que $A \cap B$ es difeomorfo a la unión disjunta de dos copias de $U_0$.
+    
+    La sucesión exacta larga en cohomología se rompe en dos tramos:
+    $$0 \longrightarrow H^0(U_1) \longrightarrow \R^2 \longrightarrow \R^2 \longrightarrow H^1(U_1) \longrightarrow 0, \qquad \qquad \qquad 0 \longrightarrow H^2(U_1) \longrightarrow 0$$
+    
+    Puesto que $U_1$ es conexo, $H^0(U_1) = \R$, así que
+    $$
+    H^k(U_1) =
+        \begin{cases}
+            \R, & \text{si } k = 0, 1 \\
+            0, & \text{si } k \ge 2
+        \end{cases}
+    $$
+    
+    \item Para hallar la cohomología de $U_{n+1}$, tomemos $A$ como la parte de $U_{n+1}$ en el semiplano $x < 2$ y $B$ como la parte de $U_{n+1}$ en el semiplano $x > 1$. Entonces $A$ es difeomorfo a $U_1$, $B$ es difeomorfo a $U_n$, $A \cap B$ es difeomorfo a $U_0$.
+    
+    Asumamos inductivamente que
+    $$
+    H^k(U_n) =
+        \begin{cases}
+            \R, & \text{si } k = 0 \\
+            \R^n, & \text{si } k = 1 \\
+            0, & \text{si } k \ge 2
+        \end{cases}
+    $$
+    
+    Entonces la sucesión larga en cohomología se rompe en dos tramos:
+    $$0 \longrightarrow H^0(U_{n+1}) \longrightarrow \R^2 \longrightarrow \R \longrightarrow H^1(U_{n+1}) \longrightarrow \R^{n+1} \longrightarrow 0, \qquad \qquad 0 \longrightarrow H^2(U_1) \longrightarrow 0$$
+    
+    Puesto que $U_{n+1}$ es conexo, $H^0(U_{n+1}) = \R$, así que
+    $$
+    H^k(U_{n+1}) =
+        \begin{cases}
+            \R, & \text{si } k = 0 \\
+            \R^{n+1}, & \text{si } k = 1 \\
+            0, & \text{si } k \ge 2
+        \end{cases}
+    $$
+\end{itemize}
+Ahora hallemos bases de los $\R$-módulos de cohomología:
+\begin{itemize}
+    \item La función constante $1$ es una base de $H^0(U_n)$, para todo $n \in \N$.
+    
+    \item Consideremos la forma $\omega \in \Omega^1(U_1)$ definida por
+    $$\omega = \frac {x \, dy - y \, dx} {x^2 + y^2}$$
+    Si integramos $\omega$ a lo largo de un pequeño círculo $\gamma$ alrededor del origen, obtenemos
+    $$\int_\gamma \omega = 2\pi$$
+    Por ende, $\omega$ no exacta. En particular, $[\omega]$ es la base estándar de $H^1(U_1)$.
+    
+    \item Sean $p_1, \dots, p_n \in \R^2$ los agujeros de $U_n$. Para cada $i$, tomemos un pequeño círculo $\gamma_i$ alrededor de $p_i$ y sea $f_i : U_n \to U_1$ la traslación de $\R^2$ que envía $p_i$ al origen. Pongamos $\omega_i = f_i^\star \omega$. Entonces,
+    $$
+    \int_{\gamma_i} \omega_j =
+        \begin{cases}
+            2\pi, & \text{si } i = j \\
+            0, & \text{si } i \ne j
+        \end{cases}
+    $$
+    
+    Por ende, $[\omega_1], \dots, [\omega_n]$ es una base de $H^1(U_n)$.
+\end{itemize}
+\end{solution}

@@ -1,0 +1,46 @@
+\documentclass{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=1in]{geometry}
+\usepackage{CJKutf8}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{amsthm}
+\usepackage[spanish]{babel}
+\usepackage{enumitem}
+\usepackage{graphicx}
+\usepackage{subfiles}
+
+\title{Superficies de Riemann (tarea 1)}
+\author{Eduardo León (\begin{CJK*}{UTF8}{bkai}梁遠光\end{CJK*})}
+\date{Abril 2020}
+
+\theoremstyle{definition}
+\newtheorem{exercise}{Ejercicio}
+\newtheorem*{addendum}{Adenda}
+
+\theoremstyle{remark}
+\newtheorem*{solution}{Solución}
+\newtheorem*{remark}{Nota}
+
+\renewcommand \proofname {Prueba}
+
+\newcommand \C {\mathbb C}
+\newcommand \N {\mathbb N}
+\newcommand \R {\mathbb R}
+\newcommand \Z {\mathbb Z}
+
+\newcommand \p [2] {\frac {\partial #1} {\partial #2}}
+
+\DeclareMathOperator \Res {Res}
+
+\begin{document}
+
+\maketitle
+
+\subfile{ex1.tex}
+\subfile{ex2.tex}
+\subfile{ex3.tex}
+\subfile{ex4.tex}
+\subfile{add.tex}
+
+\end{document}

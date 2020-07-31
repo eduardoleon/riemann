@@ -1,0 +1,9 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann compacta. Sea $\alpha$ una forma meromorfa sobre $X$. Pruebe
+que la suma de residuos de $\alpha$ en todos sus polos es cero.
+\end{exercise}
+
+\begin{solution}
+Sea $U \subset X$ una unión disjunta de discos que contienen a cada polo de $\alpha$ y sea $S = X \setminus U$. Por construcción, $S$ es una superficie con borde compacta y $\alpha$ es una forma cerrada sobre $S$. Entonces,
+$$\sum_p \Res_p \alpha = \int_{\partial U} \alpha = -\int_{\partial S} \alpha = -\int_S d\alpha = \int_S 0 = 0$$
+\end{solution}

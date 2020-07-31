@@ -1,0 +1,30 @@
+\begin{exercise}
+Pruebe el lema de Poincaré:
+$$
+H_{dR}^k(\R^n) =
+    \begin{cases}
+        \R, & \text{si } k = 0 \\
+        0, & \text{si } k \ne 0
+    \end{cases}
+$$
+\end{exercise}
+
+\begin{remark}
+El enunciado original pide demostrar los casos $n = 1,2,3,4$, pero es más fácil dar una única prueba válida para todo $n \in \N$.
+\end{remark}
+
+\begin{solution}
+Sea $M$ una variedad arbitaria. Toda forma $\omega \in \Omega^k([0,1] \times M)$ se puede escribir como
+$$\omega = \alpha_t + dt \wedge \beta_t$$
+donde $\alpha_t \in \Omega^k(M)$ y $\beta_t \in \Omega^{k-1}(M)$ están parametrizadas por $t \in [0,1]$. Diferenciando, tenemos
+$$d\omega = dt \wedge \left[ \p {\alpha_t} t - \delta \beta_t \right] + \delta \alpha_t$$
+donde $\delta$ es el operador derivada exterior de $M$. En particular, si $\omega$ es cerrada, entonces la expresión entre corchetes se anula, lo cual implica que
+$$\alpha_1 - \alpha_0 = \int_0^1 \p {\alpha_t} t \, dt = \int_0^1 \delta \beta_t \, dt = \delta \int_0^1 \beta_t \, dt$$
+es una forma exacta sobre $M$.
+
+Supongamos que $\omega = F^\star \rho$, donde $F : [0,1] \times M \to N$ es una homotopía diferenciable y $\rho \in \Omega^k(N)$ es una forma cerrada. Entonces $\alpha_t = f_t^\star \rho$, donde $f_t = F(t,-)$ es la función en el instante $t$ de la homotopía. Por el párrafo anterior, la clase de cohomología de $f_t^\star \rho$ no depende de $t$, i.e., el homomorfismo de grupos $f_t^\star : H^k(N) \to H^k(M)$ no depende de $t$. Esto se conoce como la \textit{invarianza homotópica} de la cohomología de de Rham.
+
+En particular, pongamos $M = N = \R^n$ y consideremos la homotopía $f_t(x) = tx$, cuyos extremos son la función idénticamente cero $f_0 = 0$ y la función identidad $f_1 = \id$. Puesto que $df_0 = 0$, el pullback $f_0^\star$ es el homomorfismo cero en todas las dimensiones positivas. Esto implica que el homomorfismo identidad $f_1^\star$ es igual al homomorfismo cero en todas las dimensiones positivas. Por ende, todos los grupos de cohomología $H_{dR}^k(\R^n)$ de dimensión positiva $k > 0$ son triviales.
+
+Finalmente, en dimensión cero, tenemos $H_{dR}^0(\R^n) = 0$, porque $\R^n$ tiene una componente conexa.
+\end{solution}

@@ -1,0 +1,31 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann compacta. Sean $p_0, \dots, p_n \in X$ puntos distintos y sean $w_0, \dots, w_n \in \C$ valores arbitrarios. Construya una función meromorfa $\varphi : X \to \widehat \C$ que envía $\varphi(p_i) = w_i$.
+\end{exercise}
+
+\begin{remark}
+No es necesaria la hipótesis de que $w_0, \dots, w_n$ son distintos.
+\end{remark}
+
+\begin{solution}
+Sea $m = 1 + 2g + n$, donde $g$ es el género de $X$. Por construcción, el divisor
+$$D = mp_0 - (p_1 + \dots + p_n)$$
+excede en grado al divisor canónico de $X$. Entonces, por el teorema de Riemann-Roch,
+$$\dim_\C \L_D = 1 - g + \deg D =  2 + g$$
+existen funciones meromorfas no constantes\footnote{Si hubiésemos tomado $m = 2g + n$, esta parte de la prueba no funcionaría en el caso $g = n = 0$.} con un único polo en $p_0$ y ceros en $p_1, \dots, p_n$. Compongamos cualquiera de ellas con una transformación de Möbius que fija $0$ y envía $\infty \mapsto w_0$. Entonces tenemos una función meromorfa $\varphi_0 : X \to \widehat \C$ tal que
+$$
+\varphi_0(p_i) =
+    \begin{cases}
+        w_0, & \text{si } i = 0 \\
+        0, & \text{si } i \ne 0
+    \end{cases}
+$$
+Análogamente, para cada $i = 1, \dots, n$, tenemos una función meromorfa $\varphi_i : X \to \widehat \C$ tal que
+$$
+\varphi_i(p_j) =
+    \begin{cases}
+        w_i, & \text{si } j = i \\
+        0, & \text{si } j \ne i
+    \end{cases}
+$$
+Entonces $\varphi = \varphi_0 + \dots + \varphi_n$ es la función solicitada.
+\end{solution}

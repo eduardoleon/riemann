@@ -1,0 +1,13 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Sea $v \in \X^\infty(X)$ un campo vectorial. Pruebe que $v$ es una sección diferenciable del fibrado tangente $TX$.
+\end{exercise}
+
+\begin{solution}
+En una coordenada local $z = x + iy$, el campo vectorial $v$ se representa como
+$$v = v_1 \, \p {} x + v_2 \, \p {} y$$
+Entonces la función $v : X \to TX$ se representa como
+$$v(x,y) = (x, y, v_1, v_2)$$
+La composición de $v$ con la proyección $\pi : TX \to X$ se representa como
+$$\pi \circ v(x, y) = \pi(x, y, v_1, v_2) = (x, y)$$
+Entonces $\pi \circ v = \id$. Por ende, $v$ es una sección diferenciable de $TX$.
+\end{solution}

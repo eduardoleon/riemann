@@ -1,0 +1,52 @@
+\documentclass{beamer}
+
+\usepackage{tikz}
+
+\usepackage{verbatim}
+\usetikzlibrary{arrows,shapes}
+
+
+\begin{document}
+% Declare layers
+\pgfdeclarelayer{background}
+\pgfsetlayers{background,main}
+
+\begin{frame}
+
+\tikzstyle{vertex}=[circle, draw, fill=black!53,minimum size=10pt,inner sep=2pt]
+
+
+\tikzstyle{selected vertex} = [vertex,fill=white!]
+
+\tikzstyle{edge} = [draw,thick,-, red!80]
+\tikzstyle{weight} = [font=\scriptsize]
+
+\begin{figure}
+\begin{tikzpicture}[scale=1.8, auto,swap]
+
+    % First we draw the vertices (and label each of them. Here "sing" denotes the singularity.)
+    \foreach \pos/\name  in {{(0,2)/a}, {(2,1)/b}, {(4,1)/c},
+                            {(0,0)/d}, {(3,0)/{sing}}, {(2,-1)/f}, {(4,-1)/g}}
+        \node[vertex] (\name) at \pos {$\name$};
+        
+    % Connect vertices with edges and draw weights. 
+    
+    \foreach \source/ \dest /\weight in {b/a/{[0,1]}, c/b/{[0,1]},d/a/{[-1,1]},d/b/9,
+                                         {sing}/b/7, {sing}/c/5,{sing}/d/{[1,5]},
+                                         f/d/6,f/{sing}/8,
+                                         g/{sing}/9,g/f/11}
+        \path[edge] (\source) -- node[weight] {$\weight$} (\dest);
+   
+    \foreach \vertex / \fr in {{sing}/1}
+        \path<\fr-> node[selected vertex] at (\vertex) {$\vertex$};
+    
+
+
+   
+   
+   \end{tikzpicture}
+\end{figure}
+
+\end{frame}
+
+\end{document}

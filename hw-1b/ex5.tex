@@ -1,0 +1,23 @@
+\begin{exercise}
+(Orientabilidad de una superficie de Riemann)
+
+\vspace{2mm}
+
+\noindent Una variedad topológica $X$ es \textit{suave} si admite un atlas
+$$\U = \{ (U_\alpha, \varphi_\alpha : U_\alpha \to \varphi_\alpha(U_\alpha) \subset \R^n) \}$$
+cuyas aplicaciones de transición
+$$\tau_{\alpha \beta} = \varphi_\beta \circ \varphi_\alpha^{-1} : \varphi_\alpha(U_\alpha \cap U_\beta) \to \varphi_\beta(U_\alpha \cap U_\beta)$$
+son suaves para todo $\alpha, \beta$. En este caso, decimos que $\U$ es una \textit{estructura diferenciable} sobre $X$.
+
+Decimos que $X$ es \textit{orientable} si admite una estructura diferenciable $\U$ tal que $\det d\tau_{\alpha \beta} > 0$ para todo par de índices $\alpha, \beta$. Pruebe que toda superficie de Riemann es orientable.
+\end{exercise}
+
+\begin{solution}
+Sea $\U = \{ (U_\alpha, \varphi_\alpha) \}$ un atlas holomorfo sobre $X$. Tomemos dos vecindades coordenadas $U_\alpha, U_\beta$ que se intersecan. Sea $z = x + iy$ la coordenada de $U_\alpha$ y sea $w = u + iv$ la coordenada de $U_\beta$. Entonces la aplicación de transición $\tau : \varphi_\alpha(U_{\alpha \beta}) \to \varphi_\beta(U_{\alpha \beta})$, $\tau(z) = w$ es holomorfa. Es decir,
+$$\p ux = \p vy, \qquad \qquad \p uy = -\p vx$$
+
+Tomando el jacobiano real de este cambio de coordenadas, tenemos
+$$\det d\tau = \p ux  \p vy - \p uy \p vx = \left( \p ux \right)^2 + \left( \p uy \right)^2 > 0$$
+
+Por ende, la estructura compleja de $X$ induce una orientación canónica sobre $X$.
+\end{solution}

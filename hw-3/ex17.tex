@@ -1,0 +1,11 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann compacta de género positivo. Pruebe que no hay ningún punto en $X$ sobre el cual todas las formas holomorfas en $X$ se anulan.
+\end{exercise}
+
+\begin{solution}
+Sea $p \in X$ un punto sobre el cual todas las formas holomorfas se anulan. Esto es,
+$$\dim_\C \Omega_p = \dim_\C H^{1,0}(X) = g$$
+Entonces, por el teorema de Riemann-Roch,
+$$\dim_\C \L_p - \dim_\C \Omega_p = 1 - g + \deg p \implies \dim_\C \L_p = 2$$
+existen funciones meromorfas no constantes con un único polo simple en $p$. Esto sólo es posible si $X$ es la esfera de Riemann, que tiene género $0$.
+\end{solution}

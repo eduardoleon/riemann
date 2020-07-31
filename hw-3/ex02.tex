@@ -1,0 +1,14 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Pruebe que el fibrado cotangente
+$$T^\star X = \bigcup_{p \in X} \{ p \} \times T_p^\star X$$
+es un fibrado vectorial real diferenciable de dimensión 2.
+\end{exercise}
+
+\begin{solution}
+Para cada punto $p \in X$, el espacio cotangente $T_p^\star X$ es el dual del espacio tangente $T_pX$. Por lo tanto, el fibrado cotangente $T^\star X$ es el dual del fibrado tangente $TX$. Entonces, el atlas de $T^\star X$ tiene las mismas trivializaciones locales que $TX$, pero las funciones de transición en $T^\star X$ son\footnote{Esto asume que $\alpha \in T_z^\star \R^n$ se representa como un vector columna. Si queremos enfatizar la dualidad entre los vectores y las $1$-formas en la representación matricial, entonces $\alpha$ debe ser un vector fila y la función de transición será
+$$T^\star \tau(z, \alpha) = (\tau(z), \alpha \cdot (J\tau(z)^T)^{-1})$$}
+$$T^\star \tau(z, \alpha) = (\tau(z), J\tau(z)^{-1} \cdot \alpha)$$
+donde $\tau : \varphi(U) \to \psi(U)$ es una función de transición en la base.
+
+Nuevamente, por construcción, las funciones de transición en el fibrado cotangente son diferenciables, $\R$-lineales en las componentes vectoriales y conmutan con la proyección a la base. Entonces, el atlas sobre $T^\star X$ define una estructura de fibrado vectorial real diferenciable de dimensión $2$ en cada fibra.
+\end{solution}

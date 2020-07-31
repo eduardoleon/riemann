@@ -1,0 +1,12 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann compacta. Muestre que existe un cubrimiento ramificado $f : X \to \widehat \C$ cuyos puntos de ramificación son todos simples.
+\end{exercise}
+
+\begin{solution}
+Asumamos sin pérdida de generalidad que $\infty$ es un valor regular de $f$, i.e., todos los polos de $f$ son simples. Entonces los conjuntos $P, R$ de polos y puntos de ramificación de $f$ son disjuntos. Tenemos
+$$\divi(f)_\infty = P, \qquad \qquad \qquad \deg f = \deg P$$
+
+Cada elemento de $P$ es un polo simple de $f$, por ende un cero simple de $1/f$, por ende no es ni cero ni polo de $df/f^2$, por ende es un polo doble de $df$. Como $f$ es holomorfa en $X \setminus P$, tenemos
+$$K = \divi(df) = R - 2P, \qquad \qquad \qquad \deg K = 2g - 2 = -\chi(X)$$
+donde $g \in \N$ es el género de $X$. (Aquí me quedé estancado.)
+\end{solution}

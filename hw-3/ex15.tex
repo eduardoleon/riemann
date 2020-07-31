@@ -1,0 +1,10 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Sea $U \subset X$ una subregión compacta con frontera suave. Sea $\varphi$ una función real positiva en el interior de $U$ que se anula en $\partial U$. Pruebe que
+$$\int_{\partial U} i \, \partial \varphi \ge 0$$
+\end{exercise}
+
+\begin{solution}
+Sobre $\partial U$, tenemos $d\varphi = \partial \varphi + \bar \partial \varphi = 0$. En una coordenada local $z = x + iy$, tenemos
+$$i \, \partial \varphi = \frac i2 \, \partial \varphi - \frac i2 \, \bar \partial \varphi = \p fy \, dx - \p fx \, dy =  \nabla \varphi \cdot N \, ds$$
+donde $N$ es el vector normal unitario entrante y $s$ es un parámetro de longitud de arco para $\partial U$. Como el valor mínimo de $\varphi$ en $U$ se alcanza en toda la frontera, $\nabla \varphi$ también es un vector entrante. Por lo tanto, el producto punto es no negativo y toda la integral es no negativa.
+\end{solution}

@@ -1,0 +1,12 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann compacta. Sean $Z$ el número de ceros y $P$ el número de polos de una $1$-forma meromorfa sobre $X$. Pruebe que $Z - P = 2g - 2$, donde $g$ es el género de $X$.
+\end{exercise}
+
+\begin{solution}
+Sea $K$ el divisor de la forma en cuestión. Por el teorema de Riemann-Roch,
+\begin{align*}
+    \dim_\C \L_K - \dim_\C \Omega_K &= 1 - g + \deg K \\
+    \dim_\C \L_0 - \dim_\C \Omega_0 &= 1 - g + \cancelto 0 {\deg 0}
+\end{align*}
+Sabemos que $\L_K \cong \Omega_0$ y $\L_0 \cong \Omega_K$. Por ende, $Z - P = \deg K = 2g - 2$.,
+\end{solution}

@@ -1,0 +1,94 @@
+\begin{exercise}
+(Retículos y toros)
+
+\vspace{2mm}
+
+\noindent Sean $\Gamma = \Z \omega_1 + \Z \omega_2$ y $\Gamma' = \Z \omega_1' + \Z \omega_2'$ dos retículos en $\C$.
+
+\begin{itemize}
+    \item Muestre que $\C / \Gamma$ es homeomorfo a $S^1 \times S^1 \subset \C^2$ vía
+    $$\lambda \omega_1 + \mu \omega_2 \mapsto (e^{2\pi i\lambda}, e^{2\pi i\mu})$$
+    donde $\lambda, \mu \in \R$. Aquí $S^1 \times S^1$ es considerado con la topología métrica inducida por
+    $$\{ (e^{2\pi i\lambda}, e^{2\pi i\mu}) : \lambda, \mu \in \R \}$$
+    y, puesto que $\omega_1, \omega_2$ son $\R$-linealmente independientes, se tiene $\C = \R \omega_1 + \R \omega_2$.
+    
+    \item Muestre que $\Gamma = \Gamma'$ si y sólo si existe una matriz
+    $$A \in \SL(2, \Z) = \{ A \in \GL(2, \Z) : \det A = 1 \}$$
+    que satisface alguna de las relaciones
+    $$
+    \mat{\omega_1' \\ \omega_2'} = A \mat{\omega_1 \\ \omega_2},
+    \qquad \qquad
+    \mat{\omega_1' \\ \omega_2'} = A \mat{\omega_2 \\ \omega_1}
+    $$
+    
+    \item Sea $\alpha \in \C^\star$ tal que $\alpha \Gamma \subset \Gamma'$. Muestre que el reescalamiento $z \mapsto \alpha z$ induce una aplicación holomorfa $\varphi : \C / \Gamma \to \C / \Gamma'$, la cual es un biholomorfismo si y sólo si $\alpha \Gamma = \Gamma'$.
+    
+    \item Muestre que todo toro $X = \C / \Gamma$ es isomorfo a uno de la forma
+    $$X(\tau) = \frac \C {\Z + \Z \tau}$$
+    donde $\tau$ satisface $\Im(\tau) > 0$.
+    
+    \item Sea $A = \SL(2, \Z)$ y sea $\Im(t) > 0$. Defina
+    $$\tau' = \frac {a\tau + b} {c\tau + d}, \qquad \qquad A = \mat {a & b \\ c & d}$$
+    
+    Muestre que los toros $X(\tau)$, $X(\tau')$ son biholomorfos.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{itemize}
+    \item Tomando dos copias del recubrimiento universal $p : \R \to S^1$, $p(t) = e^{2\pi it}$, tenemos
+    $$p^2(\lambda, \mu) = (p(\lambda), p(\mu)) = (e^{2\pi i\lambda}, e^{2\pi i\mu})$$
+    
+    Reetiquetando $(\lambda, \mu) \in \R^2$ como el número complejo $\lambda \omega_1 + \mu \omega_2$, tenemos
+    $$\pi(\lambda \omega_1 + \mu \omega_2) = (e^{2\pi i\lambda}, e^{2\pi i\mu})$$
+    
+    Cocientando el dominio de $\pi : \C \to S^1 \times S^1$ por el grupo fundamental $\pi_1(S^1 \times S^1) \cong \Gamma$, obtenemos $\tilde \pi : \C / \Gamma \to S^1 \times S^1$, que es el homeomorfismo deseado.
+    
+    \item Puesto que $\omega_1, \omega_2$ generan $\Gamma$, tenemos $\Gamma \subset \Gamma'$ si y sólo si $\omega_1, \omega_2 \in \Gamma'$. Esto es,
+    $$\mat{\omega_1 \\ \omega_2} = A' \mat{\omega_1' \\ \omega_2'}$$
+    para alguna matriz $A'$ con entradas enteras. Invirtiendo los roles, tenemos $\Gamma' \subset \Gamma$ si y sólo si
+    $$\mat{\omega_1' \\ \omega_2'} = A \mat{\omega_1 \\ \omega_2}$$
+    para alguna matriz $A$ con entradas enteras. Si $\Gamma = \Gamma'$, entonces $A, A'$ existen y satisfacen
+    $$\mat{\omega_1' \\ \omega_2'} = AA' \mat{\omega_1' \\ \omega_2'}$$
+    lo cual sólo es posible si $AA' = I_2$, porque $\omega_1', \omega_2'$ son $\Z$-linealmente independientes. Así pues, $A, A'$ pertenecen al grupo de unidades $M(2, \Z)^\star = \GL(2, \Z)$.
+    
+    La imagen de $\GL(2, \Z)$ bajo el determinante es el grupo de unidades $\Z^\star = \{ 1, -1 \}$. Si queremos que nuestra matriz de cambio de base $A$ siempre tenga determinante $1$, podemos invertir el orden de sus columnas de ser necesario, pero en este caso tenemos que invertir las entradas del vector $(\omega_1, \omega_2)^T$.
+    
+    \item Sean $z, w \in \C$ tales que $z = w \pmod \Gamma$. Entonces $\alpha z = \alpha w \pmod {\alpha \Gamma}$. Por ende, $\alpha z = \alpha w \pmod {\Gamma'}$. Por ende, existe una aplicación $\varphi : \C / \Gamma \to \C / \Gamma'$ que completa el diagrama conmutativo
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+        \C \arrow[r, "\alpha"] \arrow[d, "\pi"] & \C \arrow[d, "\pi'"] \\
+        \C / \Gamma \arrow[r, dashed, "\varphi"] & \C / \Gamma'
+    \end{tikzcd}
+    $$
+    donde $\pi : \C \to \C / \Gamma$ y $\pi' : \C \to \C / \Gamma'$ son los cubrimientos respectivos.
+    
+    Cubramos el plano complejo con bolas $B \subset \C$ tales que $B' = \alpha B$ puede ser trasladada al interior del polígono fundamental de $\Gamma'$, que está incluido en el polígono fundamental de $\alpha \Gamma$. Entonces $B$ puede ser trasladada al interior del polígono fundamental de $\Gamma$. En particular, $B, B'$ son buenas vecindades de los cubrimientos $\pi, \pi'$. Por ende, la representación local del diagrama anterior es
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+        B \arrow[r, "\alpha"] \arrow[d, "\pi"] & B' \arrow[d, "\pi'"] \\
+        \pi(B) \arrow[r, dashed, "\varphi"] & \pi'(B')
+    \end{tikzcd}
+    $$
+    donde $\alpha, \pi, \pi'$ son biholomorfismos locales conocidos. Por ende, $\varphi$ es un biholomorfismo local.
+    
+    Para completar nuestra felicidad, las siguientes proposiciones son equivalentes:
+    \begin{itemize}
+        \item $\varphi$ es un biholomorfismo global.
+        \item $\varphi$ es una biyección.
+        \item $\alpha \Gamma = \Gamma'$
+    \end{itemize}
+    
+    \item Intercambiando $\omega_1, \omega_2$ si es necesario, podemos suponer que $\tau = \omega_2 / \omega_1$ satisface $\Im(\tau) > 0$. Entonces, poniendo $\alpha = 1/\omega_1$, tenemos $\Gamma' = \alpha \Gamma = \Z + \Z \tau$ y deducimos que $C / \Gamma$ es biholomorfo a
+    $$\frac \C {\Gamma'} = \frac \C {\Z + \Z \tau}$$
+    
+    \item Pongamos $\Gamma = \Z + \Z \tau$. Utilizando la matriz $A$, obtenemos otra base de $\Gamma$:
+    $$\mat {\omega_1 \\ \omega_2} = A \mat {\tau \\ 1}$$
+    
+    Reescalando $\Gamma = \Z \omega_1 + \Z \omega_2$ por $\alpha = 1/\omega_2$, obtenemos $\Gamma' = \Z + \Z \tau'$, donde
+    $$\tau' = \frac {\omega_1} {\omega_2} = \frac {a\tau + b} {c\tau + d}$$
+    
+    Por el ítem anterior, $X(\tau) = \C / \Gamma$ es biholomorfo a $X(\tau') = \C / \Gamma'$.
+\end{itemize}
+\end{solution}

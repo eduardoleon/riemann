@@ -1,0 +1,13 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Pruebe que toda forma holomorfa sobre $X$ es cerrada.
+\end{exercise}
+
+\begin{remark}
+No es necesaria la hipótesis de que $X$ es compacta.
+\end{remark}
+
+\begin{solution}
+En una coordenada local $z = x + iy$, toda forma holomorfa se representa como $\alpha = f(z) \, dz$ para alguna función holomorfa $f(z)$. Diferenciando esta expresión, tenemos
+$$d\alpha = df \wedge dz = \partial f \wedge dz + \bar \partial f \wedge dz = 0$$
+El primer término es cero porque pertenece a $\Omega^{2,0}(X)$, que es trivial. El segundo término también es cero porque $f$ es holomorfa, i.e., $\bar \partial f = 0$.
+\end{solution}

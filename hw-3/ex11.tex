@@ -1,0 +1,37 @@
+\begin{exercise}
+Sea $f : M \to N$ una función diferenciable entre abiertos de $\R^m, \R^n$. Pruebe que el pullback $f^\star : \Omega^\star(N) \to \Omega^\star(M)$ conmuta con la derivada exterior, i.e., $f^\star \circ d_N = d_M \circ f^\star$. Concluya que $f^\star$ induce homomorfismos en cohomología $f^\star : H^k(N) \to H^k(M)$.
+\end{exercise}
+
+\begin{solution}
+Partamos de los siguientes hechos básicos:
+\begin{itemize}
+    \item El pullback $f^\star : \Omega^k(N) \to \Omega^k(M)$ es un homomorfismo de $\R$-algebras graduadas.
+    
+    \item La derivada exterior $d : \Omega^k(M) \to \Omega^{k+1}(M)$ es un homomorfismo de $\R$-módulos graduados.
+    
+    \item El producto interior $\iota_X : \Omega^k(M) \to \Omega^{k-1}(M)$ es un homomorfismo de $\R$-módulos graduados. (Para que esto funcione, debemos considerar que $\Omega^\star(M)$ es $\Z$-graduado, pero los submódulos de formas de grado negativo son triviales.)
+    
+    \item Las funciones y las $1$-formas exactas localmente generan $\Omega^\star(M)$ como $\R$-álgebra.
+    
+    \item Todas estas operaciones sobre formas y campos se pueden evaluar localmente. Por ello, no nos debe preocupar la posibilidad de que $\X^\infty(M)$ y $\Omega^\star(M)$ no tengan suficientes secciones globales\footnote{Otra razón para no preocuparnos es que, dada una sección local $\omega \in \Omega^k(U)$, donde $U$ es un entorno de $p$, podemos usar una partición de la unidad para construir una sección global $\tilde \omega \in \Omega^k(M)$ cuyo comportamiento es indistinguible de $\omega$ en una vecindad anidada $p \in V \subset U$. No tenemos tales comodidades en la geometría analítica o en la geometría algebraica.}.
+\end{itemize}
+Sea $\omega \in \Omega^k(N)$ una forma arbitraria. Por inducción en el grado:
+\begin{itemize}
+    \item Si $\omega = g$ es una función, entonces
+    $$f^\star dg(v) = dg(f_\star v) = dg \circ df(v) = d(g \circ f)(v) = df^\star g(v)$$
+    para todo campo vectorial $v \in \X^\infty(M)$. Por ende, $f^\star dg = df^\star g$.
+    
+    \item Asumamos inductivamente que $f^\star d\omega = df^\star \omega$, para todo $\alpha \in \Omega^k(M)$. Tomemos $k$-formas $\alpha_i \in \Omega^k(N)$ tales que $\omega = \alpha_i \wedge dx^i$. Entonces,
+    $$df^\star \omega = df^\star (\alpha_i \wedge dx^i) = d(f^\star \alpha_i \wedge f^\star dx^i) = df^\star \alpha_i \wedge f^\star dx^i + (-1)^k \, f^\star \alpha_i \wedge df^\star dx^i$$
+    
+    El segundo término se cancela, porque $df^\star dx^i = ddf^\star x^i = 0$. Entonces,
+    $$df^\star \omega = df^\star \alpha_i \wedge f^\star dx^i = f^\star d\alpha_i \wedge f^\star dx^i = f^\star (d\alpha_i \wedge dx^i) = f^\star d(\alpha_i \wedge dx^i) = f^\star d\omega$$
+\end{itemize}
+Entonces $f^\star$ es un morfismo de complejos encadenados. Por ende,
+\begin{itemize}
+    \item $f^\star$ envía formas cerradas (i.e., representantes de clases de cohomología) a formas cerradas.
+    \item $f^\star$ envía formas exactas (i.e., representantes de la clase trivial) a formas exactas.
+    \item $f^\star$ envía formas cohomólogas (i.e., que difieren por una forma cerrada) a formas cohomólogas.
+    \item $f^\star$ induce homomorfismos en cohomología $f^\star : H_{dR}^k(N) \to H_{dR}^k(M)$.
+\end{itemize}
+\end{solution}

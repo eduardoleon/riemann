@@ -1,0 +1,93 @@
+\begin{exercise}
+(Ecuaciones diferenciales) Sean $P(z)$, $Q(z)$ funciones holomorfas en el origen. Considere sus respectivas expansiones en series de potencias
+$$P(z) = \sum_n p_n z^n, \qquad \qquad Q(z) = \sum_n q_n z^n$$
+en una región común $|z| < R$.
+
+\begin{enumerate}[label=\alph*)]
+    \item Considere la ecuación diferencial homogénea de segundo orden $u'' + Pu' + Qu = 0$. Pruebe que para cada $n \in \N$ se cumple la siguiente igualdad
+    $$(n+2) (n+1) u_{n+2} + \sum_{i+j=n} (j+1) p_i u_{j+1} + \sum_{i+j=n} q_i u_j = 0$$
+    
+    \item Halle una fórmula recursiva para la expresión dada en el ítem anterior.
+    
+    \item Considere las condiciones iniciales $u_0, u_1$. Muestre que la solución en serie de potencias de la ecuación diferencial dada es única y converge para $|z| < R$.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Postulemos una solución formal $u(z)$ que se expresa como
+    $$
+    u = \sum_n u_n z^n, \qquad
+    u' = \sum_n (n+1) u_{n+1} z^n, \qquad
+    u'' = \sum_n (n+2) (n+1) u_{n+2} z^n
+    $$
+    
+    Recordemos que el producto de dos series de potencias es
+    $$\sum_n a_n z^n \cdot \sum_n b_n z^n = \sum_n \sum_{i+j=n} a_i b_j z^n$$
+    
+    Entonces los términos de la ecuación diferencial son
+    $$
+    Pu'
+        = \sum_n p_n z^n \cdot \sum_n (n+1) u_{n+1} z^n
+        = \sum_n \sum_{i+j=n} (j+1) p_i u_{j+1} z^n
+    $$
+    $$
+    Qu
+        = \sum_n q_n z^n \cdot \sum_n u_n z^n
+        = \sum_n \sum_{i+j=n} q_i u_j z^n
+    $$
+    
+    Combinando todo, tenemos
+    $$
+    0
+        = \sum_n (n+2) (n+1) u_{n+2} z^n
+        + \sum_n \sum_{i+j=n} (j+1) p_i u_{j+1} z^n
+        + \sum_n \sum_{i+j=n} q_i u_j z^n
+    $$
+    $$
+    0 = \sum_n \left[
+        (n+2) (n+1) u_{n+2} +
+        \sum_{i+j=n} (j+1) p_i u_{j+1} +
+        \sum_{i+j=n} q_i u_j
+    \right] z^n
+    $$
+    
+    Por el teorema de la identidad, cada coeficiente entre corchetes se anula:
+    $$(n+2) (n+1) u_{n+2} + \sum_{i+j=n} (j+1) p_i u_{j+1} + \sum_{i+j=n} q_i u_j = 0$$
+    
+    \item Por construcción, $u_{n+2}$ no aparece en las sumatorias
+    $$\sum_{i+j=n} (j+1) p_i u_{j+1}, \qquad \qquad \sum_{i+j=n} q_i u_j$$
+    
+    Entonces la recurrencia que determina la sucesión $u_n$ es
+    $$u_{n+2} = \frac {-1} {(n+2) (n+1)} \left[
+        \sum_{i+j=n} (j+1) p_i u_{j+1} +
+        \sum_{i+j=n} q_i u_j \right]
+    $$
+    
+    \item Una vez conocidas las semillas $u_0, u_1$, el resto de la sucesión $u_n$ está completamente determinado por la recurrencia construida en el ítem anterior. Por ende, la solución en serie de potencias de la ecuación diferencial es única.
+    
+    Tomemos cualquier $r < R$. Puesto que las series
+    $$P(r) = \sum_n p_n r^n, \qquad \qquad Q(r) = \sum_n q_n r^n$$
+    son absolutamente convergentes, existe una cota uniforme $L > 0$ tal que
+    $$|p_n| r^{n+1} \le L, \qquad \qquad |q_n| r^{n+2} \le L$$
+    
+    Si $L > 1$, reemplacemos $r$ con $r/L$. De este modo, aseguramos que la cota $L = 1$ funcione.
+    
+    Tomemos $M > 0$ tal que $|u_0| \le M$, $|u_1| \, r \le M$. Supongamos inductivamente que $(j+1) \,|u_j| \, r^j \le M$ para todo $i = 0, 1, 2, \dots, n+1$. Entonces,
+    \begin{align*}
+    (n+2) (n+1) \, |u_{n+2}| \, r^{n+2}
+        & = \left| \sum_{i+j=n} (j+1) p_i u_{j+1} r^{n+2} + \sum_{i+j=n} q_i u_j r^{n+2} \right| \\
+        & \le \sum_{i+j=n} (j+1) \, |p_i u_{j+1}| \, r^{n+2} + \sum_{i+j=n} |q_i u_j| \, r^{n+2} \\
+        & \le M \cdot \sum_{j=0}^n \, (j+2) \\
+        & = M \cdot \frac {(n+1) (n+4)} 2
+    \end{align*}
+    
+    Por ende, para todo $n \in \N$, también es válida la cota superior
+    $$|u_{n+2}| \, r^{n+2} \le \frac M2 \cdot \frac {n+4} {n+2} \le M$$
+    
+    Por ende, la solución formal $u(z)$ hallada en el ítem a) converge en el disco $|z| < r$.
+    
+    Tomemos un punto $z_0$ del círculo $|z| = r$. Puesto que $P, Q$ son holomorfas en $z_0$, podemos repetir el procedimiento del ítem a) usando las series de potencias de $P, Q$ centradas en $z_0$. Sea $\tilde u(z)$ la única solución de este nuevo problema y sea $\tilde r > 0$ su radio de convergencia. Entonces $\tilde u(z) = u(z)$ en la intersección de los discos $|z| < r$ y $|z - z_0| < \tilde r$. Por ende, $\tilde u(z)$ es una continuación analítica de $u(z)$. Por ende, la solución $u(z)$ se extiende a todo el disco $|z| < R$. Por ende, el radio de convergencia de $u(z)$ es mayor o igual que $R$.
+\end{enumerate}
+\end{solution}

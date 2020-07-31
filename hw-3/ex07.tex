@@ -1,0 +1,43 @@
+\begin{exercise}
+Sea $U$ un subconjunto abierto de $\R^n$.
+
+\begin{enumerate}[label=\alph*)]
+    \item Muestre que los grupos de cohomología de de Rham $H_{dR}^k(U)$ son $\R$-espacios vectoriales.
+    \item Muestre que la dimensión de $H_{dR}^0(U)$ es el número de componentes conexas de $U$.
+    \item Muestre que $H_{dR}^k(U) = 0$ si y sólo si toda $k$-forma cerrada sobre $U$ es exacta.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item El complejo de de Rham es el diagrama de $\R$-módulos y $\R$-homomorfismos
+    $$
+    \begin{tikzcd}
+    0
+        \arrow[r, "d"] & \Omega^0(U)
+        \arrow[r, "d"] & \Omega^1(U)
+        \arrow[r, "d"] & \Omega^2(U)
+        \arrow[r, "d"] & \dots
+    \end{tikzcd}
+    $$
+    
+    Los $\R$-submódulos de cociclos (formas cerradas) y cofronteras (formas exactas) son
+    $$
+    Z^k = \ker d : \Omega^k(U) \to \Omega^{k+1}(U), \qquad \qquad \qquad
+    B^k = \im d : \Omega^{k-1}(U) \to \Omega^k(U)
+    $$
+    
+    La condición $d^2 = 0$ implica que $B^k \subset Z^k$. Por ende, los grupos de cohomología
+    $$H_{dR}^k(U) = \frac {Z^k} {B^k} = \frac {\ker d^{(k)}} {\im d^{(k-1)}}$$
+    están bien definidos y son $\R$-espacios vectoriales.
+    
+    \item Los elementos de $H^0(U)$ son las funciones $f : U \to \R$ cuya derivada se anula. Esto implica que $f$ es localmente constante. Entonces $f$ toma un único valor en cada componente conexa de $U$.
+    
+    Puesto que $U$ es localmente homeomorfo a $\R^n$, entonces $U$ es localmente conexo y sus componentes conexas son abiertas. Entonces el valor de $f$ en cada componente se puede escoger libremente.
+    
+    Por ende, $H_{dR}^0(U)$ es el producto directo de tantas copias de $\R$ como $U$ tenga componentes conexas. Si $U$ tiene un número de componentes conexas, entonces este producto directo es también una suma directa y $\dim_\R H_{dR}^0(U)$ cuenta el número de sumandos, i.e., el número de componentes conexas.
+    
+    \item Por construcción, $H_{dR}^k(U) = 0$ si y sólo si $Z^k = B^k$, si y sólo si toda $k$-forma cerrada es exacta.
+\end{enumerate}
+\end{solution}

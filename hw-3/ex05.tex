@@ -1,0 +1,51 @@
+\begin{exercise}
+Sea $\Omega^\star(\R^n)$ el espacio de formas diferenciales en $\R^n$ y sea $d : \Omega^\star(\R^n) \to \Omega^\star(\R^n)$ el operador derivada exterior. Pruebe las siguientes afirmaciones:
+\begin{enumerate}[label=\alph*)]
+    \item $d(\alpha \wedge \beta) = d\alpha \wedge \beta + (-1)^p \, \alpha \wedge d\beta$, para todo $\alpha \in \Omega^p(\R^n)$, $\beta \in \Omega^q(\R^n)$.
+    
+    \item $d^2 = d \circ d = 0$, esto es, $\Omega^\star(\R^n)$ es un complejo de cadenas.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{enumerate}[label=\alph*)]
+    \item Por inducción, en el grado total de $\alpha \wedge \beta$, tenemos los siguientes casos:
+    \begin{itemize}
+        \item Si $\alpha = f$ y $\beta = g$ son funciones, entonces
+        $$
+        d(fg)
+            = \p {} {x^i} (fg) \, dx^i
+            = g \, \p f {x^i} \, dx^i + f \, \p g {x^i} dx^i
+            = g \, df + f \, dg
+        $$
+        
+        \item Si $\alpha = \alpha_i \wedge dx^i$ es de grado positivo, entonces
+        $$
+        d(\alpha \wedge \beta)
+            = (-1)^{pq} \, d(\beta \wedge \alpha)
+            = (-1)^{pq+q} \, \beta \wedge d\alpha + (-1)^{pq} \, d\beta \wedge \alpha
+            = d\alpha \wedge \beta + (-1)^p \, \alpha \wedge d\beta
+        $$
+        
+        \item Si $\beta = \beta_i \wedge dx^i$ es de grado positivo, entonces
+        \begin{align*}
+        d(\alpha \wedge \beta)
+            &= d(\alpha \wedge \beta_i \wedge dx^i) \\
+            &= d(\alpha \wedge \beta_i) \wedge dx^i \\
+            &= [d\alpha \wedge \beta_i + (-1)^p \, \alpha \wedge d\beta_i] \wedge dx^i \\
+            &= d\alpha \wedge \beta_i \wedge dx^i + (-1)^p \, \alpha \wedge d\beta \wedge dx^i \\
+            &= d\alpha \wedge \beta + (-1)^p \, \alpha \wedge d\beta
+        \end{align*}
+    \end{itemize}
+    
+    \item Por inducción en el grado de $\omega \in \Omega^k(\R^n)$, tenemos los siguientes casos:
+    \begin{itemize}
+        \item Si $\omega = f$ es una función, entonces\footnote{La contracción de un tensor simétrico con uno antisimétrico es cero.}
+        $$d^2 f = \m f {x^i} {x^j} \, dx^i \wedge dx^j = 0$$
+        
+        \item Si $\omega = \omega_i \wedge dx^i$ es de grado positivo, entonces
+        $$d^2 \omega = d^2 (\omega_i \wedge dx^i) = d^2 \omega_i \wedge dx^i = 0$$
+    \end{itemize}
+\end{enumerate}
+\end{solution}

@@ -1,0 +1,9 @@
+\begin{exercise}
+Sea $U$ un subconjunto abierto de $\R^n$. Muestre que toda forma exacta en $U$ es cerrada.
+\end{exercise}
+
+\begin{solution}
+Supongamos primero que existe un difeomorfismo $f : U \to \R^n$. Entonces $f^\star : \Omega^\star(\R^n) \to \Omega^\star(U)$ es un isomorfismo de complejos de cadenas. En particular, $f^\star$ identifica las formas cerradas (resp. exactas) sobre $U$ con las formas cerradas (resp. exactas) sobre $\R^n$. Entonces, por el ítem b) del ejercicio anterior, toda forma exacta sobre $U$ es cerrada.
+
+Consideremos ahora el caso general. Dadas una forma exacta $\alpha \in \Omega^\star(U)$ y una bola incrustada $B \subset U$, la restricción $\alpha|_B$ también es exacta. Puesto que $B$ es difeomorfa a $\R^n$, el argumento del párrafo anterior implica que $\alpha|_B$ es cerrada, i.e., $d\alpha|_B = 0$. Finalmente, como $U$ puede ser cubierto por bolas, $d\alpha$ se anula alrededor de cada punto $p \in U$, lo cual implica que $d\alpha = 0$, i.e., $\alpha$ es cerrada.
+\end{solution}

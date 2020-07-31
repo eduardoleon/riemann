@@ -1,0 +1,68 @@
+\begin{exercise}
+(La recta proyectiva compleja)
+
+\vspace{2mm}
+
+\noindent La recta proyectiva compleja $\CP^1$ se define como el cociente del espacio total $M = \C^2 - \{ 0 \}$ en el cual dos vectores $v, v' \in M$ se identifican si existe un escalar $\lambda \in \C^\star$ tal que $v' = \lambda v$.
+
+\begin{itemize}
+    \item Pruebe que $\CP^1$ dotado de la topología cociente es una superficie topológica.
+    
+    \item Sean $U_i = \{ [z_1 : z_2] \in \CP^1 : z_i \ne 0 \}$ y considere las aplicaciones $\varphi_i : U_i \to \C$ definidas por
+    $$\varphi_1([z_1 : z_2]) = z_2 / z_1, \qquad \qquad \varphi_2([z_1 : z_2]) = z_1 / z_2$$
+    
+    Muestre que $\U = \{ (U_1, \varphi_1), (U_2, \varphi_2) \}$ es un atlas holomorfo sobre $\CP^1$.
+    
+    \item Muestre que $\CP^1$ es biholomorfa a la esfera de Riemann $\widehat \C$.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{itemize}
+    \item La topología cociente es la topología más fina sobre $\CP^1$ tal que la aplicación cociente $\pi : M \to \CP^1$ es continua. Esta topología se construye declarando como abiertos a los subconjuntos $U \subset \CP^1$ cuya preimagen $\pi^{-1}(U)$ es abierta en $M$.
+    
+    Sea $z, w : \C^2 \to \C$ un sistema lineal de coordenadas y sea $V \subset \C^2$ el abierto $w \ne 0$. Consideremos el automorfismo $\psi : V \to V$ definido por $\psi(z, w) = (z/w, w)$ y la proyección $\rho : V \to \C$ que descarta la coordenada $w$. Por construcción, $\psi$ envía órbitas de $\pi$ en el dominio a órbitas de $\rho$ en el codominio. Entonces la aplicación $\varphi : \pi(V) \to \C$, $\varphi([z:w]) = z/w$ que completa el diagrama conmutativo
+    $$
+    \begin{tikzcd}[row sep=large, column sep=large]
+        V \arrow[r, "\psi"] \arrow[d, "\pi"] & V \arrow[d, "\rho"] \\
+        \pi(V) \arrow[r, dashed, "\varphi"] & \C
+    \end{tikzcd}
+    $$
+    es un homeomorfismo. Considerando todas las elecciones posibles de $z, w$, hemos construido un atlas topológico sobre $\CP^1$. Sólo faltan dos últimos detalles:
+    \begin{itemize}
+        \item Dados dos puntos $p, q \in \CP^1$, siempre podemos elegir $z, w$ de tal manera $p, q \in \pi(V)$. Entonces $p, q$ pueden ser separados en $\CP^1$ utilizando los mismos abiertos que los separan en $\pi(V)$. Por ende, $\CP^1$ es un espacio Hausdorff.
+        
+        \item Dos elecciones de $z, w$ (en particular, las que usaremos en el siguiente ítem) son suficientes  para cubrir $\CP^1$. Las dos vecindades $\pi(V)$ inducidas son segundo enumerables, por ende, la unión de ellas, que es todo $\CP^1$, también es segundo enumerable.
+    \end{itemize}
+    
+    Entonces $\CP^1$ es una variedad topológica de dimensión real $2$, i.e., una superficie.
+    
+    \item Sea $z', w' : \C^2 \to \C$ un nuevo sistema lineal de coordenadas y sea
+    $$\mat {z' \\ w'} = \mat {a & b \\ c & d} \mat {z \\ w}$$
+    el cambio de base entre el sistema original y este nuevo sistema. Entonces la aplicación de transición entre $\pi(V)$ y $\pi(V')$ es la transformación de Möbius
+    $$z'/w' = \frac {az + bw} {cz + bw} = \frac {a(z/w) + b} {c(z/w) + d}$$
+    que es obviamente holomorfa. En particular,
+    \begin{itemize}
+        \item Tomando $(z, w) = (z_2, z_1)$ obtenemos la carta $(U_1, \varphi_1)$.
+        \item Tomando $(z', w') = (z_1, z_2)$ obtenemos la carta $(U_2, \varphi_2)$.
+        \item La aplicación de transición entre estas cartas es la inversa multiplicativa $z_2 / z_1 \mapsto z_1 / z_2$.
+    \end{itemize}
+    
+    \item La estructura compleja de $\widehat \C$ se construye usando un atlas muy similar al de $\CP^1$:
+    \begin{itemize}
+        \item Sobre la vecindad $\C$, usamos la carta coordenada $z \mapsto z$.
+        \item Sobre la vecindad $\C^{-1} = \widehat \C - \{ 0 \}$, usamos la carta coordenada $z \mapsto 1/z$.
+        \item La aplicación de transición entre estas cartas es la inversa multiplicativa $z \mapsto 1/z$.
+    \end{itemize}
+    
+    El isomorfismo $\varphi : \CP^1 \to \C$ que aprovecha esta semejanza estructural está definido por
+    $$
+    \varphi([z_1 : z_2]) =
+    \begin{cases}
+        z_2 / z_1, & \text{si } z_1 \ne 0 \\
+        \infty, & \text{si } z_1 = 0
+    \end{cases}
+    $$
+\end{itemize}
+\end{solution}

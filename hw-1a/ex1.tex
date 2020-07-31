@@ -1,0 +1,232 @@
+\begin{exercise}
+(Función gamma)
+\begin{enumerate}[label=\alph*)]
+    \item Considere la función integral de Euler (de segunda clase)
+    $$\Gamma(x) = \int_0^\infty e^{-t} t^{x-1} \, dt$$
+    
+    Muestre que dicha función es continua para todo $x > 0$.
+    
+    \item Considere la función de variable compleja (función gamma)
+    $$\Gamma(z) = \int_0^\infty e^{-t} t^{z-1} \, dt$$
+    
+    Muestre que $\Gamma(z)$ es continua en todo punto de la región $D = \{ z \in \C \mid \Re(z) > 0 \}$.
+    
+    \item Sea $C$ una curva compacta contenida en $D$. Muestre que
+    $$\int_C \Gamma(z) \, dz = \int_0^\infty e^{-t} \left[ \int_C t^{z-1} \, dz \right] dt$$
+    
+    \item Sea $C$ una curva cerrada contenida en $D$. Muestre que
+    $$\int_C \Gamma(z) \, dz = 0$$
+    
+    (\textit{Sugerencia:} Apele al teorema de Cauchy-Goursat.)
+    
+    \item Muestre que $\Gamma(z)$ es analítica para todo $z \in D$. (\textit{Sugerencia:} Apele al teorema de Morera.)
+    
+    \item Muestre que $\Gamma(z + 1) = z \Gamma(z)$ y concluya que $\Gamma$ admite una extensión meromorfa en $\Re(z) > -1$. Más precisamente, $\Gamma$ es analítica en $\Re(z) > -1$ excepto en el origen, donde existe un polo simple.
+    
+    \item Muestre que $\Gamma$ admite una extensión meromorfa a todo el plano $\C$ con polos simples en los enteros no positivos. Muestre que el residuo en $z = -k$ es $(-1)^k / k!$.
+    
+    \item Muestre que $\Gamma$ no tiene ceros.
+\end{enumerate}
+\end{exercise}
+
+\begin{solution}
+Pongamos $\varphi(t, z) = e^{-t} t^{z-1}$, donde, por supuesto, $t^z = e^{z \ln t}$.
+
+\begin{enumerate}[label=\alph*)]
+    \item Si $x \ge 1$, entonces existe algún $T \ge 1$ tal que $t^{x-1} \le e^{t/2}$ para todo $t \ge T$. Entonces,
+    $$
+    \Gamma(x)
+        = \int_0^T \varphi(t, z) \, dt + \int_T^\infty \varphi(t, z) \, dt
+        \le \int_0^T e^{-t} t^{x-1} \, dt + \int_T^\infty e^{-t/2} \, dt
+    $$
+    
+    Por otro lado, si $0 < x \le 1$, entonces
+    $$
+    \Gamma(x)
+        = \int_0^1 \varphi(t, z) \, dt + \int_1^\infty \varphi(t, z) \, dt
+        \le \int_0^1 t^{x-1} \, dt + \int_1^\infty e^{-t} \, dt
+    $$
+    
+    En ambos casos, $\Gamma(x)$ está acotado por una cantidad finita. Por ende, $\Gamma(x)$ es un número real bien definido para todo $x > 0$.
+    
+    Sea $x_n > 0$ es una sucesión convergente, con límite $x > 0$. Por construcción, la sucesión de funciones $f_n(t) = \varphi(t, x_n)$ converge punto a punto a $f(t) = \varphi(t, x)$. Además, $f_n$ es eventualmente dominada en valor absoluto por la función integrable
+    $$
+    g(t) =
+    \begin{cases}
+        \varphi(t, x + \varepsilon) & t \ge 1 \\
+        \varphi(t, x - \varepsilon) & t \le 1
+    \end{cases}
+    $$
+    
+    Entonces, por el teorema de la convergencia dominada,
+    $$
+    \lim_{n \to \infty} \Gamma(x_n)
+        = \lim_{n \to \infty} \int_0^\infty f_n
+        = \int_0^\infty \lim_{n \to \infty} f_n
+        = \int_0^\infty f
+        = \Gamma(x)
+    $$
+    
+    Por ende, $\Gamma$ es continua en $x$.
+    
+    \item Pongamos $x = \Re(z)$ y observemos que $|\varphi(t, z)| = \varphi(t, x)$. Entonces,
+    $$
+    |\Gamma(z)|
+        = \left| \int_0^\infty \varphi(t, z) \, dt \right|
+        \le \int_0^\infty \varphi(t, x) \, dt
+        = \Gamma(x)
+    $$
+    es una cantidad finita. Por ende, $\Gamma(z)$ es un número complejo bien definido.
+    
+    Sea $z_n \in D$ es una sucesión convergente, con límite $z \in D$. Por construcción, la sucesión de funciones $f_n(t) = \varphi(t, z_n)$ converge punto a punto a $f(t) = \varphi(t, z)$. Además, $f_n$ es eventualmente dominada en módulo por la función integrable
+    $$
+    g(t) =
+    \begin{cases}
+        \varphi(t, x + \varepsilon) & t \ge 1 \\
+        \varphi(t, x - \varepsilon) & t \le 1
+    \end{cases}
+    $$
+    
+    Entonces, por el teorema de la convergencia dominada,
+    $$
+    \lim_{n \to \infty} \Gamma(z_n)
+        = \lim_{n \to \infty} \int_0^\infty f_n
+        = \int_0^\infty \lim_{n \to \infty} f_n
+        = \int_0^\infty f
+        = \Gamma(z)
+    $$
+    
+    Por ende, $\Gamma$ es continua en $z$.
+    
+    \item Para toda curva compacta $C$, la integral
+    $$\int_C |\Gamma(z)| \, dz \le \int_C \Gamma(\Re(z)) \, dz$$
+    es una cantidad finita. Entonces, por el teorema de Fubini-Tonelli,
+    $$
+    \int_C \Gamma(z)
+        = \int_C \int_0^\infty \varphi(t, z) \, dt \, dz
+        = \int_0^\infty \int_C \varphi(t, z) \, dz \, dt
+        = \int_0^\infty e^{-t} \left[ \int_C t^{z-1} dz \right] dt
+    $$
+    
+    \item Fijemos $t > 0$. La función $f(z) = t^{z-1}$ es entera. Por el teorema de Cauchy-Goursat,
+    $$\int_C t^{z-1} \, dz = 0$$
+    para toda curva cerrada $C$ en el plano. Entonces,
+    $$
+    \int_C \Gamma(z) \, dz
+        = \int_0^\infty e^{-t} \left[ \int_C t^{z-1} \, dz \right] dt
+        = \int_0^\infty 0
+        = 0
+    $$
+    para toda curva cerrada $C$ contenida en $D$.
+    
+    \item El resultado del ítem anterior es textualmente la hipótesis del teorema de Morera:
+    $$\int_C \Gamma(z) \, dz = 0$$
+    para toda curva cerrada $C$ contenida en $D$. La conclusión del teorema es que $\Gamma$ es holomorfa en $D$.
+    
+    \item Pongamos $u = t^z$, $v = -e^{-t}$. Entonces $du = zt^{z-1} \, dt$, $dv = e^{-t} \, dt$. Entonces,
+    $$\Gamma(z+1) = \int_0^\infty u \, dv = uv \Big \vert_0^\infty - \int_0^\infty v \, du = z \Gamma(z)$$
+    
+    Esto nos permite extender $\Gamma$ de manera meromorfa a $\Re(z) > -1$ como
+    $$\Gamma(z) = \frac {\Gamma(z+1)} z$$
+    
+    Puesto que $\Gamma(1) = 1$ no es ni cero ni polo, $\Gamma$ tiene un polo simple en $z = 0$, con residuo
+    $$\Res(\Gamma, 0) = \Gamma(1) \cdot \Res(1/z, 0) = 1$$
+    
+    \item Utilizando repetidamente la recurrencia $\Gamma(z+1) = z \Gamma(z)$, tenemos
+    $$\Gamma(z) = \frac {\Gamma(z+k+1)} {(z+k) \cdots (z+2) \cdot (z+1) \cdot z} = \frac {\Delta(z)} {z+k}$$
+    
+    Esta extensión es meromorfa en $\Re(z) > -(k+1)$. Puesto que
+    $$\Delta(-k) = \frac 1 {(-1) \cdot (-2) \cdot (-3) \cdots (-k)} = \frac {(-1)^k} {k!}$$
+    no es ni cero ni polo, $\Gamma$ tiene un polo simple en $z = -k$, con residuo
+    $$\Res(\Gamma, -k) = \Delta(-k) \cdot \Res \left( \frac 1 {z+k}, 0 \right) = \frac {(-1)^k} {k!}$$
+    
+    \item Tomemos un número complejo en la franja $0 < \Re(z) < 1$. Entonces,
+    $$\Gamma(z) \Gamma(1-z) = \int_0^\infty \int_0^\infty e^{-(t+s)} t^{z-1} s^{-z} \, ds \, dt$$
+    
+    Pongamos $u = s + t$, $v = t/s$. Diferenciando, tenemos
+    $$
+    \p us = 1, \qquad 
+    \p ut = 1, \qquad
+    \p vs = -\frac t {s^2}, \qquad
+    \p vt = \frac 1s
+    $$
+    
+    El jacobiano de este cambio de variables es
+    $$J = \p us \p vt - \p ut \p vs = \frac 1s + \frac t {s^2} = \frac u {s^2}$$
+    
+    Entonces $s^{-2} \, ds \, dt = u^{-1} \, du \, dv$. Por ende,
+    $$
+    s^{-1} \, ds \, dt
+        = \frac {s+t} {1 + t/s} \, s^{-2} \, ds \, dt
+        = \frac u {1+v} \, u^{-1} \, du \, dv
+        = \frac 1 {1+v} \, du \, dv
+    $$
+    
+    Aplicando este cambio de variables a la integral original, tenemos
+    $$
+    \Gamma(z) \Gamma(1-z)
+        = \int_0^\infty \int_0^\infty e^{-(t+s)} (t/s)^{z-1} s^{-1} \, ds \, dt
+        = \int_0^\infty \int_0^\infty e^{-u} v^{z-1} \frac 1 {1+v} \, du \, dv
+    $$
+    
+    Aplicando la sustitución $v = e^w$ a esta integral, tenemos
+    $$
+    \Gamma(z) \Gamma(1-z)
+        = \int_0^\infty e^{-u} \, du \cdot \int_0^\infty \frac {v^z} {1+v} \, \frac {dv} v
+        = 1 \cdot \int_{-\infty}^\infty \frac {e^{zw}} {1 + e^w} \, dw
+    $$
+    
+    El beneficio de la última sustitución es que el nuevo integrando
+    $$f(w) = \frac 1 {g(w)} = \frac {e^{zw}} {1 + e^w}$$
+    es meromorfo con polos simples en los múltiplos impares de $\pi i$. Esto nos permite evaluar la integral de manera indirecta, utilizando una integral de contorno en el plano complejo como paso intermedio. Consideremos el lazo formado por los siguientes tramos:
+    \begin{enumerate}[label=\Alph*)]
+        \item El segmento de recta desde $w = -R$ hasta $w = R$.
+        \item El segmento de recta desde $w = R$ hasta $w = R - 2\pi i$.
+        \item El segmento de recta desde $w = R - 2\pi i$ hasta $w = -R - 2\pi i$.
+        \item El segmento de recta desde $w = -R - 2\pi i$ hasta $w = -R$.
+    \end{enumerate}
+    
+    Este lazo encierra un único polo simple de $f$ en el punto $w = -\pi i$, cuyo residuo es
+    $$\Res(f, -\pi i) = \frac 1 {g'(-\pi i)} = \frac {e^{-\pi iz}} {e^{-\pi i}} = -e^{-\pi iz}$$
+    
+    Puesto que el lazo gira en sentido horario, por el teorema del residuo,
+    $$
+    \int_A f + \int_B f + \int_C f + \int_D f
+        = -2\pi i \Res(f, -\pi i)
+        = 2\pi i e^{-\pi iz}
+    $$
+    
+    Analicemos el comportamiento de estas integrales cuando $R$ tiende a $\infty$:
+    
+    \begin{itemize}
+        \item El segmento $A$ converge a la recta real. El segmento $C$ se obtiene revirtiendo $A$ y desfasando $w$ por $-2\pi i$. Por ende, en el límite,
+        $$\int_A f + \int_C f = (1 - e^{-2\pi iz}) \, \Gamma(z) \Gamma(1-z)$$
+        
+        \item Los segmentos $B$ y $D$ tienen longitud constante $2\pi$. Poniendo $x = \Re(z)$, $r = e^R$, tenemos
+        $$
+        \left| \int_B f \right| \le \int_B |f| \le \frac {2\pi r^x} {r-1},
+        \qquad \qquad
+        \left| \int_D f \right| \le \int_D |f| \le \frac {2\pi r^{-x}} {1-r^{-1}}
+        $$
+        
+        Ambas cantidades tienden a cero.
+    \end{itemize}
+    
+    Combinando estos resultados, obtenemos la fórmula de reflexión de Euler:
+    $$
+    \Gamma(z) \Gamma(1-z)
+        = \frac {2\pi ie^{-\pi iz}} {1 - e^{-2\pi iz}}
+        = \frac {2\pi i} {e^{\pi iz} - e^{-\pi iz}}
+        = \frac \pi {\sin \pi z}
+    $$
+    
+    Hemos deducido esta fórmula sólo para $0 < \Re(z) < 1$, pero, por continuación analítica, la fórmula se cumple en todo $\C - \Z$. Entonces:
+    \begin{itemize}
+        \item $\Gamma$ no tiene ceros en $\C - \Z$.
+        \item $\Gamma$ no tiene ceros en $z = -k$ para $k \in \N$, porque dichos puntos son polos.
+        \item $\Gamma$ no tiene ceros en $z = k+1$ para $k \in \N$, porque $\Gamma(k+1) = k!$.
+    \end{itemize}
+    
+    Por ende, la función $\Gamma$ no tiene ceros.
+\end{enumerate}
+\end{solution}

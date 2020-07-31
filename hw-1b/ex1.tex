@@ -1,0 +1,96 @@
+\begin{exercise}
+(Compactificaciones)
+
+\begin{itemize}
+    \item (Compactificación de Alexandroff) Consideere el conjunto $X = \R^n \cup \{ \infty \}$ equipado con la topología en la cual un subconjunto $U \subset X$ es abierto si cumple una de las siguientes condiciones:
+    \begin{enumerate}[label=\alph*)]
+        \item Si $\infty \notin U$, entonces $U$ es un subconjunto abierto de $\R^n$.
+        \item Si $\infty \in U$, entonces $X - U$ es un subconjunto compacto en $\R^n$.
+    \end{enumerate}
+    
+    Muestre que $X$ es un espacio topológico Hausdorff y compacto.
+
+    \item (Proyección estereográfica) Considere la esfera unitaria
+    $$S^n = \{ (x_0, \dots, x_n) \in \R^{n+1} : x_0^2 + \dots + x_n^2 = 1 \}$$
+    
+    Muestre que la proyección estereográfica $\sigma : S^n \to X$ dada por
+    $$
+    \sigma(x_0, \dots, x_n) =
+    \begin{cases}
+        \dfrac 1 {1 - x_0} (x_1, \dots, x_n), & \text{si } x_0 \ne 1 \\
+        \infty, & \text{si } x_0 = 1
+    \end{cases}
+    $$
+    
+    es un homeomorfismo. En particular, la esfera de Riemann $\widehat \C$ es homeomorfa a la esfera $S^2$, después de identificar $\R^2$ con $\C$ de la manera usual.
+\end{itemize}
+\end{exercise}
+
+\begin{solution}
+\leavevmode
+\begin{itemize}
+    \item Primero nos aseguraremos de que la topología del enunciado sea, en efecto, una topología. Notemos que los abiertos de $X$ son los subconjuntos $U \subset X$ tales que
+    \begin{enumerate}[label=\alph*)]
+        \item La parte finita $U' = U \cap \R^n$ es un subconjunto abierto de $\R^n$.
+        \item Si $\infty \in U$, entonces $U^c = X - U$ es un subconjunto acotado de $\R^n$. Recordemos que $C > 0$ es una cota para $A \subset \R^n$ si todo punto $p \in A$ tiene norma $\Vert p \Vert < C$.
+    \end{enumerate}
+    
+    Dada una familia $\F = \{ U_\alpha \}$ de subconjuntos de $X$, pongamos $\F' = \{ U_\alpha' \}$ y $\F^c = \{ U_\alpha^c \}$.
+    
+    Sea $\F$ una familia de abiertos de $X$. Entonces $V = \bigcup \F$ también es un abierto de $X$:
+    \begin{enumerate}[label=\alph*)]
+        \item $\F'$ es una familia de abiertos de $\R^n$. Entonces $V' = \bigcup (\F')$ es un abierto de $\R^n$.
+        
+        \item Si $\infty \in \bigcup \F$, entonces existe algún $U \in \F$ tal que $\infty \in U$. Su complemento $U^c$ es acotado. Por ende, $V^c = \bigcap (\F^c)$ está acotado por la misma cota de $U^c$.
+    \end{enumerate}
+    
+    Sea $\G$ una familia finita de abiertos de $X$. Entonces $V = \bigcap \G$ también es un abierto de $X$:
+    \begin{enumerate}[label=\alph*)]
+        \item $\G'$ es una familia finita de abiertos de $\R^n$. Entonces $V' = \bigcap (\G')$ es un abierto de $\R^n$.
+        
+        \item Si $\infty \in \bigcap \G$, entonces $\infty \in U$ para todo $U \in \G$. Entonces todos los complementos $U^c \in \G^c$ son acotados. Por ende, $V^c = \bigcup (\G^c)$ está acotado por el máximo de las cotas de los $U^c \in \G^c$.
+    \end{enumerate}
+    
+    Puesto que $\R^n$ es Hausdorff y abierto en $X$, dos puntos distintos de $\R^n$ pueden ser separados en $X$ utilizando los mismos abiertos que los separan en $\R^n$. Puesto que $\R^n$ es localmente compacto, todo punto de $\R^n$ puede ser separado de $\infty$ por una vecindad relativamente compacta. Por ende, $X$ es un espacio Hausdorff.
+    
+    Sea $\F$ una cobertura abierta de $X$. En particular, existe algún $U \in \F$ tal que $\infty \in U$.
+    Entonces $U^c$ es compacto y existe una subfamilia finita $\G \subset \F$ que cubre $U^c$. Agregando $U$ a la canasta $\G$, tenemos una subfamilia finita de $\F$ que cubre $X$. Por ende, $X$ es un espacio compacto.
+    
+    \item La proyección estereográfica $\sigma$ es una biyección por razones geométricas:
+    \begin{itemize}
+        \item Si $p$ es el polo norte de $S^n$, entonces $\sigma(p) = \infty$.
+        \item Si $p$ no es el polo norte de $S^n$, entonces $q = \sigma(p)$ es el único punto del hiperplano $x_0 = 0$  que es colineal con $p$ y el polo norte.
+        \item Si $q$ es un punto del hiperplano $x_0 = 0$, entonces existe un único punto $p = \sigma^{-1}(q)$, distinto del polo norte, que es colineal con $q$ y el polo norte.
+    \end{itemize}
+    
+    La proyección estereográfica $\sigma$ es continua en cada punto $p \in S^2$:
+    \begin{itemize}
+        \item Si $p$ no es el polo norte, entonces tomaremos una vecindad $U$ de $p$ alejada del polo norte. Por construcción, la restricción de $\sigma$ a $U$ es una aplicación diferenciable $\tilde \sigma : U \to \R^n$. Entonces $\tilde \sigma$ es continua en $p$. Por ende, $\sigma$ es continua en $p$.
+        
+        \item Si $p$ es el polo norte, entonces tomaremos una vecindad arbitrariamente pequeña de $\infty = \sigma(p)$, i.e., el complemento $K^c$ de un compacto arbitrariamente grande $K \subset \R^n$. Sea $C > 0$ una cota superior para $K$ y consideremos los puntos $(x_0, \dots, x_n) \in S^2$ tales que
+        $$\frac {1 + x_0} {1 - x_0} > C^2$$
+        
+        Estos puntos forman una vecindad agujereada en $p$. Para estos puntos,
+        $$
+        \Vert \sigma(x_0, \dots, x_n) \Vert^2
+            = \frac {\Vert (x_1, \dots, x_n) \Vert^2} {(1 - x_0)^2}
+            = \frac {1 - x_0^2} {(1 - x_0)^2}
+            = \frac {1 + x_0} {1 - x_0}
+            > C^2
+        $$
+        
+        Entonces $\sigma(x_0, \dots, x_n) \in K^c$. Por ende, $\sigma$ es continua en el polo norte.
+    \end{itemize}
+    
+    La inversa de la proyección estereográfica $\sigma$ también es continua:
+    \begin{itemize}
+        \item En un espacio Hausdorff y compacto (e.g. $S^n$ o $X$), los subespacios compactos son precisamente los subconjuntos cerrados.
+        
+        \item Por continuidad, $\sigma$ envía subespacios compactos de $S^n$ a subespacios compactos de $X$.
+        
+        \item Entonces $\sigma$ envía subconjuntos cerrados de $S^n$ a subconjuntos cerrados de $X$.
+    \end{itemize}
+    
+    Por ende, la proyección estereográfica $\sigma$ es un homeomorfismo.
+\end{itemize}
+\end{solution}

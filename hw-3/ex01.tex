@@ -1,0 +1,18 @@
+\begin{exercise}
+Sea $X$ una superficie de Riemann. Pruebe que el fibrado tangente
+$$TX = \bigcup_{p \in X} \{ p \} \times T_pX$$
+es un fibrado vectorial real diferenciable de dimensión 2.
+\end{exercise}
+
+\begin{solution}
+Tomemos un atlas diferenciable sobre $X$. Para cada vecindad $U \subset X$ con una carta coordenada $\varphi : U \to \R^2$, sea $TU$ la parte de $TX$ que se proyecta sobre $U$ y definamos $T\varphi : TU \to \R^4$ por
+$$T\varphi(p, v_p) = (\varphi(p), (\varphi \circ \gamma)'(0))$$
+donde $\gamma : (-\varepsilon, \varepsilon) \to S$ es una curva que pasa por $\gamma(0) = p$ con velocidad $v_p$.
+
+Dada una segunda carta $\psi : U \to \R^2$, sin pérdida de generalidad definida sobre la misma vecindad $U$, consideremos la función de transición $\tau : \varphi(U) \to \psi(U)$. Por la regla de la cadena,
+$$(\psi \circ \gamma)'(0) = (\tau \circ \varphi \circ \gamma)'(0) = J\tau(z) \cdot (\varphi \circ \gamma)'(0)$$
+donde $z = \varphi(p)$. Entonces la función de transición $T\tau : \varphi(U) \times \R^2 \to \psi(U) \times \R^2$ en el fibrado es
+$$T\tau(z, v) = (\tau(z), J\tau(z) \cdot v)$$
+
+Por construcción, las funciones de transición en el fibrado tangente son diferenciables, $\R$-lineales en las componentes vectoriales y conmutan con la proyección a la base. Entonces, el atlas sobre $TX$ define una estructura de fibrado vectorial real diferenciable de dimensión $2$ en cada fibra.
+\end{solution}
